@@ -1,0 +1,111 @@
+{
+  "settings": {
+    "title": "BIXI PRO",
+    "favicon": "./favicon.ico",
+    "avatar": "./assets/images/layout/avatar.svg",
+    "login": {
+      "header": {
+        "logo": "./assets/images/layout/logo-large.svg"
+      },
+      "main": {
+        "background": "./assets/images/layout/login-bg.png",
+        "slogan": {
+          "title": "Enterprise-Level Front-End Solutions",
+          "items": [
+            "Based on the design logic of Antd design, supported by a strong design team",
+            "Full test coverage, long production test, supported by a strong R&D team",
+            "Elegant API, built-in dark mode, Support skin customization and other functions",
+            "No complex dependency, 100% on onPush mode"
+          ]
+        }
+      },
+      "footer": {
+        "links": [
+          {
+            "text": "DataGrand",
+            "link": "http://www.datagrand.com?utm_source=bixi_pro&utm_medium=login"
+          },
+          {
+            "text": "BIXI",
+            "link": "http://bixi.datagrand.com/zh?utm_source=bixi_pro&utm_medium=login"
+          },
+          {
+            "text": "Gitlab",
+            "link": "https://git.datagrand.com/frontend_utils/bixi_pro"
+          },
+          {
+            "text": "About",
+            "link": "http://www.datagrand.com/about.html?utm_source=bixi_pro&utm_medium=login"
+          }
+        ],
+        "copyright": "Copyright DataGrand Tech Inc. All Rights Reserved. 沪ICP备15028292-1号"
+      }
+    },
+    "menu": {
+      "logoSmall": "./assets/images/layout/logo-small.svg",
+      "logoLarge": "./assets/images/layout/logo-large.svg"
+    },
+    "sentry": {
+      "open": false,
+      "dsn": ""
+    }
+  },
+  "menus": [
+    {
+      "titleI18n": "menu.monitor",
+      "icon": "icons/side-menu:task",
+      "children": [
+        {
+          "titleI18n": "monitor.overview",
+          "link": "/dashboard/overview"
+        },
+        {
+          "titleI18n": "monitor.data_analysis",
+          "link": "/dashboard/data-analysis"
+        }
+      ]
+    },
+    {
+      "titleI18n": "menu.list",
+      "icon": "icons/side-menu:task",
+      "children": [
+        {
+          "titleI18n": "list.simple_list",
+          "link": "/list/simple-list"
+        },
+        {
+          "titleI18n": "list.advanced_list",
+          "link": "/list/advanced-list"
+        }
+      ]
+    },
+    {
+      "titleI18n": "menu.form",
+      "icon": "bixi/outline/robot:ui",
+      "children": [
+        {
+          "titleI18n": "form.basic_form",
+          "link": "/form/basic-form"
+        },
+        {
+          "titleI18n": "form.group_form",
+          "link": "/form/group-form"
+        },
+        {
+          "titleI18n": "form.step_form",
+          "link": "/form/step-form"
+        }
+      ]
+    },
+    {
+      "titleI18n": "menu.setting",
+      "icon": "icons/side-menu:setting",
+      "children": [
+        {
+          "titleI18n": "menu.setting_permissions",
+          "link": "/setting"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+<bixi-layout>
+  <bixi-layout-header [tools]="headerTools" [logoSmall]="logoSmall" [logoLarge]="logoLarge">
+    <ng-template #headerTools>
+      <div class="layout-tools">
+        <layout-user></layout-user>
+      </div>
+    </ng-template>
+  </bixi-layout-header>
+  <bixi-layout-menu [menus]="menus"></bixi-layout-menu>
+  <bixi-layout-content>
+    <router-outlet></router-outlet>
+    <app-spin></app-spin>
+  </bixi-layout-content>
+</bixi-layout>

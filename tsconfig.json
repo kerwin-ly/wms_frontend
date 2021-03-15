@@ -1,0 +1,86 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@bases": [
+        "src/app/bases/index"
+      ],
+      "@bases/*": [
+        "src/app/bases/*"
+      ],
+      "@configs": [
+        "src/app/configs/index"
+      ],
+      "@configs/*": [
+        "src/app/configs/*"
+      ],
+      "@constants": [
+        "src/app/constants/index"
+      ],
+      "@constants/*": [
+        "src/app/constants/*"
+      ],
+      "@cores": [
+        "src/app/cores/index"
+      ],
+      "@cores/*": [
+        "src/app/cores/*"
+      ],
+      "@layouts/*": [
+        "src/app/layouts/*"
+      ],
+      "@models": [
+        "src/app/models/index"
+      ],
+      "@models/*": [
+        "src/app/models/*"
+      ],
+      "@modules": [
+        "src/app/modules/index"
+      ],
+      "@modules/*": [
+        "src/app/modules/*"
+      ],
+      "@routes": [
+        "src/app/routes/index"
+      ],
+      "@routes/*": [
+        "src/app/routes/*"
+      ],
+      "@services": [
+        "src/app/services/index"
+      ],
+      "@services/*": [
+        "src/app/services/*"
+      ],
+      "@utils": [
+        "src/app/utils/index"
+      ],
+      "@utils/*": [
+        "src/app/utils/*"
+      ],
+      "@environments/*": [
+        "src/environments/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "zh-CN": "中文",
+  "en-US": "English",
+  "passport": {
+    "sign_in": "Sign In",
+    "sign_out": "Sign out",
+    "account": "account number",
+    "password": "account number",
+    "placeholder_account": "Please enter the account",
+    "placeholder_password": "Please enter the password",
+    "remember_account": "Remember Account",
+    "login_rejected": "Login failed"
+  },
+  "menu": {
+    "checkbox": "Checkbox",
+    "account": "Profile",
+    "exception": "Exception",
+    "login": "Sign in",
+    "list": "List",
+    "chart": "Chart",
+    "monitor": "Monitor",
+    "setting": "Settings",
+    "setting_permissions": "Permissions",
+    "form": "Form"
+  },
+  "monitor": {
+    "overview": "Overview",
+    "data_analysis": "Data Analysis",
+
+    "real_time_trading": "Real Time Trading",
+    "forumn_feedback": "Forumn Feedback",
+    "app_feedback": "APP Feedback",
+    "medium_feedback": "Medium Feedback",
+    "other_feedback": "Other Feedback",
+    "feedback_count": "Feedback Count",
+    "user_browser": "User Browser",
+    "top_brand": "Popular Brand",
+    "user_platform": "Revenue",
+    "user_gender": "User Gender",
+    "today": "Today",
+    "all_week": "All Week",
+    "all_month": "All Month",
+    "all_year": "All Year",
+
+    "total_count": "Deal Count",
+    "total_visit": "Visits",
+    "total_payment": "Payments",
+    "total_turnover": "Turnover",
+    "dod_change": "DoD Change",
+
+    "trending": "User Trending",
+    "user_data": "User Data",
+    "total_consume": "Total Consume",
+    "user_active_time": "Visit Time",
+    "product_category": "Product Category",
+    "top_product_search": "Top Search"
+  },
+  "list": {
+    "simple_list": "Simple List",
+    "advanced_list": "Advanced List",
+    "doc_name": "Name",
+    "doc_desc": "Introduction",
+    "add": "Add",
+    "robot": "Robot",
+    "app": "App",
+    "task_name": "Task Name",
+    "task_progress": "Progress",
+    "task_status_0": "Waiting",
+    "task_status_1": "Running",
+    "task_status_2": "Success",
+    "batch_delete": "Batch Delete",
+    "select_all": "Select all",
+    "select_this_page": "Select this page",
+    "robot_desc": "The robot you created under this tenant"
+  },
+  "form": {
+    "basic_form": "Basic",
+    "group_form": "Group",
+    "step_form": "Step"
+  },
+  "account": {
+    "info": "Personal Information",
+    "username": "Username"
+  },
+  "layout": {
+    "account": "Profile",
+    "language": "Language",
+    "theme": "Theme",
+    "logout_confirm": "Operation Confirmation",
+    "logout_confirm_text": "Are you sure you want to sign out?",
+    "theme_default": "Default",
+    "theme_dark": "Dark",
+    "default": "Default",
+    "dark": "Dark"
+  },
+  "name": "Name",
+  "status": "Status",
+  "created_at": "Created At",
+  "created_by": "Created By",
+  "view": "View",
+  "edit": "Edit",
+  "delete": "Delete",
+  "operations": "Operations",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "more": "More",
+  "permissions": {
+    "car.view": "View Car",
+    "car.create": "Create Car",
+    "car.edit": "Edit Car",
+    "car.delete": "Delete Car"
+  }
+}

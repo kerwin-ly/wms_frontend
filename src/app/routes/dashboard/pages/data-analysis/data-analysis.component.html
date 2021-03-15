@@ -1,0 +1,59 @@
+<shared-page-container>
+  <div nz-row [nzGutter]="[16, 16]" class="card-container-col">
+    <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6" nzXl="6" *ngFor="let card of cards">
+      <dashboard-card *ngIf="card.title; else emptyCardChart" [title]="card.title | translate" [subTitle]="card.title | translate" [data]="card.data"
+        [trend]="card.trend" [raise]="card.raise" [icon]="card.icon">
+      </dashboard-card>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="16">
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="16" nzXl="16" class="chart-container-col">
+      <nz-card [nzTitle]="'monitor.trending' | translate" nzSize="small">
+        <div class="chart-warp" *ngIf="markTrendData; else emptyChart">
+          <bixi-chart-line [series]="markTrendData.series" [types]="markTrendData.types" [grid]="markTrendData.grid">
+          </bixi-chart-line>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="8" nzXl="8" class="chart-container-col">
+      <nz-card [nzTitle]="'monitor.user_data' | translate" nzSize="small">
+        <div class="chart-warp" *ngIf="userPieData; else emptyChart">
+          <bixi-chart-pie [series]="userPieData.series" [title]="userPieData.title"></bixi-chart-pie>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="24" class="chart-container-col">
+      <nz-card [nzTitle]="'monitor.user_active_time' | translate" nzSize="small">
+        <div class="chart-warp" *ngIf="systemData; else emptyChart">
+          <bixi-chart-line [series]="systemData.series" [grid]="systemData.grid">
+          </bixi-chart-line>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12" class="chart-container-col">
+      <nz-card [nzTitle]="'monitor.product_category' | translate" nzSize="small">
+        <div class="chart-warp" *ngIf="productData; else emptyChart">
+          <bixi-chart-bar [series]="productData.series" [types]="productData.types" [grid]="productData.grid">
+          </bixi-chart-bar>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12" class="chart-container-col">
+      <nz-card [nzTitle]="'monitor.top_product_search' | translate" nzSize="small">
+        <div class="chart-warp" *ngIf="compareData; else emptyChart">
+          <bixi-chart-bar [series]="compareData.series" [types]="compareData.types" [grid]="compareData.grid">
+          </bixi-chart-bar>
+        </div>
+      </nz-card>
+    </div>
+  </div>
+</shared-page-container>
+
+<ng-template #emptyChart>
+  <nz-skeleton [nzParagraph]="{ rows: 4, width: ['70%', '80%', '95%', '45%'] }" [nzActive]="true"></nz-skeleton>
+</ng-template>
+
+<ng-template #emptyCardChart>
+  <nz-skeleton class="dashboard-card-container" [nzTitle]="false" [nzParagraph]="{ rows: 4, width: ['70%', '95%', '45%', '70%'] }" [nzActive]="true">
+  </nz-skeleton>
+</ng-template>

@@ -1,0 +1,113 @@
+{
+  "zh-CN": "中文",
+  "en-US": "English",
+  "passport": {
+    "sign_in": "登录",
+    "sign_out": "退出登录",
+    "account": "账号",
+    "password": "账号",
+    "placeholder_account": "请输入用户名",
+    "placeholder_password": "请输入密码",
+    "remember_account": "记住用户名",
+    "login_rejected": "登录失败"
+  },
+  "menu": {
+    "account": "个人中心",
+    "exception": "异常",
+    "login": "登录",
+    "list": "列表页",
+    "chart": "数据可视化",
+    "monitor": "数据监控",
+    "setting": "应用配置",
+    "setting_permissions": "权限",
+    "form": "表单"
+  },
+  "monitor": {
+    "overview": "监控大屏",
+    "data_analysis": "数据分析",
+
+    "real_time_trading": "用户实时反馈数据监控",
+    "forumn_feedback": "论坛反馈占比",
+    "app_feedback": "APP 反馈占比",
+    "medium_feedback": "媒体反馈占比",
+    "other_feedback": "其他反馈占比",
+    "feedback_count": "反馈数量",
+    "user_browser": "用户使用浏览器占比",
+    "top_brand": "最受欢迎品牌销量",
+    "user_platform": "各大论坛营收比重",
+    "user_gender": "用户性别分析",
+    "today": "当日",
+    "all_week": "本周",
+    "all_month": "本月",
+    "all_year": "全年",
+
+    "total_count": "当日成交数",
+    "total_visit": "网站访问量",
+    "total_payment": "支付成功数",
+    "total_turnover": "当前营业额",
+    "dod_change": "较昨日趋势",
+
+    "trending": "用户消费趋势分析",
+    "user_data": "用户消费比重",
+    "total_consume": "总消费额度",
+    "user_active_time": "多时段访问量",
+    "product_category": "不同地区产品销量",
+    "top_product_search": "用户搜索数据"
+  },
+  "list": {
+    "checkbox": "选择框",
+    "simple_list": "极简列表",
+    "advanced_list": "高级列表",
+    "doc_name": "文档名称",
+    "doc_desc": "文档简介",
+    "add": "新增",
+    "robot": "机器人",
+    "app": "应用",
+    "task_name": "任务名称",
+    "task_progress": "处理进度",
+    "task_status_0": "等待执行",
+    "task_status_1": "正在执行",
+    "task_status_2": "已完成",
+    "batch_delete": "批量删除",
+    "select_all": "选择全部",
+    "select_this_page": "选择本页",
+    "robot_desc": "本租户下您创建的机器人"
+  },
+  "form": {
+    "basic_form": "基础表单",
+    "group_form": "分组表单",
+    "step_form": "分步表单"
+  },
+  "account": {
+    "info": "个人信息",
+    "username": "用户名"
+  },
+  "layout": {
+    "account": "个人中心",
+    "language": "界面语言",
+    "theme": "主题切换",
+    "logout_confirm": "退出登录确认",
+    "logout_confirm_text": "您确定要退出登录?",
+    "theme_default": "默认主题",
+    "theme_dark": "暗黑主题",
+    "default": "默认",
+    "dark": "暗黑"
+  },
+  "name": "名称",
+  "status": "状态",
+  "created_at": "创建时间",
+  "created_by": "创建者",
+  "view": "查看",
+  "edit": "修改",
+  "delete": "删除",
+  "operations": "操作",
+  "more": "更多",
+  "confirm": "确定",
+  "cancel": "取消",
+  "permissions": {
+    "user.view": "查看用户",
+    "user.create": "创建用户",
+    "user.edit": "编辑用户",
+    "user.delete": "删除用户"
+  }
+}

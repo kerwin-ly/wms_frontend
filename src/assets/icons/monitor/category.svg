@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
+    <title>3.数据看板导航/指标数据/数据/图标/ICON2</title>
+    <defs>
+        <linearGradient x1="3.97266497%" y1="-18.2156983%" x2="85.5201236%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#2BE3E3" offset="0%"></stop>
+            <stop stop-color="#13C2C2" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="16" cy="16" r="16"></circle>
+        <filter x="-18.8%" y="-18.8%" width="137.5%" height="137.5%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.823529412   0 0 0 0 0.831372549   0 0 0 0 0.870588235  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M13.3625958,16.7648579 C14.3149546,16.7648579 15.086994,17.5368973 15.086994,18.4892561 L15.086994,21.9793055 C15.086994,22.9316643 14.3149546,23.7037037 13.3625958,23.7037037 L8.14814815,23.7037037 L8.14814815,18.4892561 C8.14814815,17.5368973 8.92018752,16.7648579 9.87254635,16.7648579 L13.3625958,16.7648579 Z M22.1274537,16.7648579 C23.0798125,16.7648579 23.8518519,17.5368973 23.8518519,18.4892561 L23.8518519,23.7037037 L18.6374042,23.7037037 C17.6850454,23.7037037 16.913006,22.9316643 16.913006,21.9793055 L16.913006,18.4892561 C16.913006,17.5368973 17.6850454,16.7648579 18.6374042,16.7648579 L22.1274537,16.7648579 Z M13.3625958,8 C14.3149546,8 15.086994,8.77203937 15.086994,9.7243982 L15.086994,13.2144476 C15.086994,14.1668065 14.3149546,14.9388458 13.3625958,14.9388458 L9.87254635,14.9388458 C8.92018752,14.9388458 8.14814815,14.1668065 8.14814815,13.2144476 L8.14814815,8 L13.3625958,8 Z M20.3824289,8 C22.2985383,8 23.8518519,9.55331355 23.8518519,11.4694229 C23.8518519,13.3855323 22.2985383,14.9388458 20.3824289,14.9388458 C18.4663196,14.9388458 16.913006,13.3855323 16.913006,11.4694229 C16.913006,9.55331355 18.4663196,8 20.3824289,8 Z" id="path-4"></path>
+        <filter x="-19.1%" y="-19.1%" width="138.2%" height="138.2%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.823529412   0 0 0 0 0.831372549   0 0 0 0 0.870588235  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="3.数据看板导航/指标数据/数据/图标/ICON2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="32" height="32"></rect>
+        <g id="yingyong-1">
+            <g id="椭圆形" opacity="0.15">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+            </g>
+            <g id="合并形状">
+                <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-4"></use>
+            </g>
+        </g>
+    </g>
+</svg>

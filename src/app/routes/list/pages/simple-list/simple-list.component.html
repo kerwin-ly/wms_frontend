@@ -1,0 +1,29 @@
+<shared-page-container>
+  <bixi-filter
+    key="list-simple-list-table"
+    [(filterParams)]="filterParams"
+    (search)="onResetPaginationAndSearch()"
+    [(cols)]="cols"
+    [showKeyword]="true"
+    >
+    <bixi-filter-actions>
+      <button nz-button  nzType="primary" (click)="onEditDoc()">
+        <i nz-icon nzType="plus"></i>{{'list.add' | translate}}
+      </button>
+    </bixi-filter-actions>
+  </bixi-filter>
+  <bixi-table
+    [rows]="rows"
+    [cols]="cols"
+    [(filterParams)]="filterParams"
+    [(pagination)]="pagination"
+    [loading]="loading"
+    (search)="onSearch()">
+  </bixi-table>
+</shared-page-container>
+
+<list-edit-doc-dialog
+  [(visible)]="dialogs.edit.visible"
+  [doc]="dialogs.edit.doc"
+  (ok)="onResetPaginationAndSearch()">
+</list-edit-doc-dialog>

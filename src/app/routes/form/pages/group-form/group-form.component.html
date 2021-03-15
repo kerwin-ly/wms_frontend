@@ -1,0 +1,78 @@
+<form-container>
+  <main>
+    <nz-page-header (nzBack)="onCancel()" nzBackIcon nzTitle="分组表单">
+    </nz-page-header>
+    <form nz-form [formGroup]="form">
+      <form-group-title>基本信息</form-group-title>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          索引名称
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <input nz-input placeHolder="请输入" formControlName="input">
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          索引标识
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <input nz-input placeHolder="请输入" formControlName="input">
+        </nz-form-control>
+      </nz-form-item>
+      <form-group-title>词典配置</form-group-title>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          违禁词典
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <nz-radio-group formControlName="radio">
+            <label nz-radio *ngFor="let option of selectOptions" [nzValue]="option.value">
+              {{option.label}}
+            </label>
+          </nz-radio-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          场景类型
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+            <nz-checkbox-group formControlName="checkbox">
+            </nz-checkbox-group>
+          </nz-form-control>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          数据类型
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <nz-select nzShowSearch nzAllowClear nzPlaceHolder="请选择" formControlName="select">
+            <nz-option *ngFor="let option of selectOptions" [nzLabel]="option.label" [nzValue]="option.value">
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <form-group-title>字段配置</form-group-title>
+      <bixi-editable-table [cols]="cols" formControlName="editable"></bixi-editable-table>
+    </form>
+  </main>
+  <footer>
+    <nz-form-item>
+      <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" [nzNoColon]="true">
+      </nz-form-label>
+      <nz-form-control nzXs="18" nzSm="19" nzMd="20" nzLg="21" nzXl="22">
+        <nz-space>
+          <nz-space-item>
+            <button nz-button nzType="primary" (click)="onSubmit()">确认</button>
+          </nz-space-item>
+          <nz-space-item>
+            <button nz-button (click)="onCancel()">取消</button>
+          </nz-space-item>
+        </nz-space>
+      </nz-form-control>
+    </nz-form-item>
+  </footer>
+</form-container>

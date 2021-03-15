@@ -1,0 +1,139 @@
+<form-container>
+  <main>
+    <nz-page-header (nzBack)="onCancel()" nzBackIcon nzTitle="基础表单">
+    </nz-page-header>
+    <form nz-form [formGroup]="form">
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          文本输入
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <input nz-input placeholder="请输入" formControlName="input">
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          下拉选择
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <nz-select nzShowSearch nzAllowClear nzPlaceHolder="请选择" formControlName="select">
+            <nz-option *ngFor="let option of selectOptions" [nzLabel]="option.label" [nzValue]="option.value">
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2">
+          单选选择
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <nz-radio-group formControlName="radio">
+            <label nz-radio *ngFor="let option of radioOptions" [nzValue]="option.value">
+              {{option.label}}
+            </label>
+          </nz-radio-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          多选选择
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <nz-checkbox-group formControlName="checkbox">
+          </nz-checkbox-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          颜色选择
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <bixi-color-picker model="hex" formControlName="color"></bixi-color-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          标签选择
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <bixi-tag-select placeholder="请选择" tagPlaceholder="请输入标签名称" formControlName="tags" [(options)]="allTags"></bixi-tag-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2">
+          开关选择
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <nz-switch formControlName="switch" nzCheckedChildren="是" nzUnCheckedChildren="否">
+          </nz-switch>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          日期范围
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <nz-range-picker formControlName="dateRange"></nz-range-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          时间范围
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <nz-range-picker formControlName="timeRange" [nzShowTime]="true"></nz-range-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          文件选择
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <nz-upload nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76">
+            <button nz-button><i nz-icon nzType="upload"></i>上传文件</button>
+          </nz-upload>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" nzRequired>
+          数字输入
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <nz-input-number formControlName="number" [nzMin]="1" [nzMax]="10" [nzStep]="1"></nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2">
+          文本域
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="16" nzLg="12" nzXl="8">
+          <textarea placeholder="请输入" rows="4" nz-input formControlName="textarea"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2">
+          可编辑表格
+        </nz-form-label>
+        <nz-form-control nzXs="18" nzSm="19" nzMd="20" nzLg="21" nzXl="22">
+          <bixi-editable-table [cols]="cols" formControlName="editable"></bixi-editable-table>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </main>
+  <footer>
+    <nz-form-item>
+      <nz-form-label nzXs="6" nzSm="5" nzMd="4" nzLg="3" nzXl="2" [nzNoColon]="true">
+      </nz-form-label>
+      <nz-form-control nzXs="18" nzSm="19" nzMd="20" nzLg="21" nzXl="22">
+        <nz-space>
+          <nz-space-item>
+            <button nz-button nzType="primary" (click)="onSubmit()">确认</button>
+          </nz-space-item>
+          <nz-space-item>
+            <button nz-button (click)="onCancel()">取消</button>
+          </nz-space-item>
+        </nz-space>
+      </nz-form-control>
+    </nz-form-item>
+  </footer>
+</form-container>

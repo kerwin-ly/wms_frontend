@@ -1,0 +1,43 @@
+{
+  "extends": "./node_modules/@bixi/lint/base-tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      [
+        "shared",
+        "space",
+        "dashboard",
+        "setting",
+        "layout",
+        "account",
+        "passport",
+        "exception",
+        "curd",
+        "list",
+        "form"
+      ],
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      [
+        "shared",
+        "space",
+        "dashboard",
+        "setting",
+        "layout",
+        "account",
+        "passport",
+        "exception",
+        "curd",
+        "list",
+        "form",
+        "upload",
+        "app"
+      ],
+      "kebab-case"
+    ]
+  }
+}

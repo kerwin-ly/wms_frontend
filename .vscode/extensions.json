@@ -1,0 +1,11 @@
+{
+	"recommendations": [
+		"ms-vscode.vscode-typescript-tslint-plugin",
+		"stylelint.vscode-stylelint",
+    "angular.ng-template",
+    "streetsidesoftware.code-spell-checker"
+	],
+	"unwantedRecommendations": [
+    "dbaeumer.vscode-eslint"
+  ]
+}

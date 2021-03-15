@@ -1,0 +1,4 @@
+{
+  "extends": "./node_modules/@bixi/lint/base-stylelint.json",
+  "ignoreFiles": ["src/assets/**/*", "_mock/*"]
+}

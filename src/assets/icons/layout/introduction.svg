@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.844549851">
+        <g id="开发平台登录页-copy-3" transform="translate(-239.000000, -286.000000)" fill="#FFFFFF">
+            <g id="分组-19" transform="translate(239.000000, 286.000000)">
+                <g id="icon">
+                    <polygon id="路径-3" points="5 4.5 8.5 8 5 11.5 10.8326452 8"></polygon>
+                    <path d="M8,16 C3.581722,16 0,12.418278 0,8 C0,3.581722 3.581722,0 8,0 C12.418278,0 16,3.581722 16,8 C16,12.418278 12.418278,16 8,16 Z M8,15.5151515 C12.1505036,15.5151515 15.5151515,12.1505036 15.5151515,8 C15.5151515,3.84949643 12.1505036,0.484848485 8,0.484848485 C3.84949643,0.484848485 0.484848485,3.84949643 0.484848485,8 C0.484848485,12.1505036 3.84949643,15.5151515 8,15.5151515 Z" id="椭圆形" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

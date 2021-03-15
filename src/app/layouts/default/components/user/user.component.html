@@ -1,0 +1,90 @@
+<div class="layout-user" nz-dropdown nzTrigger="click" [nzClickHide]="true" (nzVisibleChange)="onVisibleChange($event)" nzPlacement="bottomRight"
+  [nzDropdownMenu]="menu">
+  <div class="user-info" [ngClass]="{ 'focus': focus || visible }">
+    <nz-avatar [nzSize]="24" [nzSrc]="avatarSrc">
+    </nz-avatar>
+    {{username}}
+  </div>
+</div>
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu class="dropdown-user-info">
+    <li nz-menu-item>
+      <div class="action" (click)="onGotoProfile()">{{ 'layout.account' | translate}}</div>
+    </li>
+    <li nz-submenu [nzTitle]="i18n" nzMenuClassName="dropdown-user-info-submenu">
+      <ul>
+        <li nz-menu-item>
+          <div class="action i18n-action" (click)="onSwitchLang('zh-CN')">
+            <span>
+              中文
+            </span>
+            <span>
+              <i *ngIf="lang === 'zh-CN'" nz-icon nzType="check" nzTheme="outline"></i>
+            </span>
+          </div>
+        </li>
+        <li nz-menu-item>
+          <div class="action i18n-action" (click)="onSwitchLang('en-US')">
+            <span>
+              English
+            </span>
+            <span>
+              <i *ngIf="lang === 'en-US'" nz-icon nzType="check" nzTheme="outline"></i>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </li>
+    <li nz-submenu [nzTitle]="themes" nzMenuClassName="dropdown-user-info-submenu">
+      <ul>
+        <li nz-menu-item>
+          <div class="action i18n-action" (click)="onThemeChange('default')">
+            <span>
+              {{ 'layout.theme_default' | translate}}
+            </span>
+            <span>
+              <i *ngIf="theme === 'default'" nz-icon nzType="check" nzTheme="outline"></i>
+            </span>
+          </div>
+        </li>
+        <li nz-menu-item>
+          <div class="action i18n-action" (click)="onThemeChange('dark')">
+            <span>
+              {{ 'layout.theme_dark' | translate}}
+            </span>
+            <span>
+              <i *ngIf="theme === 'dark'" nz-icon nzType="check" nzTheme="outline"></i>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </li>
+    <li nz-menu-item>
+      <div class="action" (click)="onLogout()">{{ 'passport.sign_out' | translate}}</div>
+    </li>
+
+  </ul>
+</nz-dropdown-menu>
+
+<ng-template #i18n>
+  <div class="action i18n-action-title">
+    <span>
+      {{ 'layout.language' | translate}}
+    </span>
+    <span>
+      {{lang === 'zh-CN'  ? '中文' : 'English'}}
+    </span>
+  </div>
+</ng-template>
+
+<ng-template #themes>
+  <div class="action i18n-action-title">
+    <span>
+      {{ 'layout.theme' | translate}}
+    </span>
+    <span>
+      {{(theme === 'default' ? 'layout.default' : 'layout.dark') | translate}}
+    </span>
+  </div>
+</ng-template>

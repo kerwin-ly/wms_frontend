@@ -1,0 +1,60 @@
+@import 'color';
+
+.passport-login-form {
+  .wrap {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 362px;
+    padding: 48px 24px;
+    padding-bottom: 12px;
+    background: @bixi-white;
+    border-radius: 2px;
+
+    .title {
+      margin-bottom: 24px;
+      color: #151f37;
+      font-size: 22px;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .error-panel {
+      margin-bottom: 8px;
+    }
+
+    .center {
+      .actions {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  ::ng-deep .ant-alert {
+    margin-top: -15px;
+    padding: 6px 15px 6px 28px;
+
+    .ant-alert-icon {
+      top: 10px;
+      left: 8px;
+    }
+  }
+
+  ::ng-deep .ant-form-item {
+    margin-bottom: 16px;
+  }
+
+  ::ng-deep .ant-input-lg {
+    padding: 5px 12px;
+    font-size: 14px;
+  }
+
+  ::ng-deep .ant-btn-primary {
+    height: 36px;
+    font-size: 14px;
+  }
+
+  ::ng-deep .ant-checkbox + span {
+    padding-left: 3px;
+  }
+}

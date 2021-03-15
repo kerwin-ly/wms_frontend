@@ -1,0 +1,77 @@
+<shared-page-container>
+  <div nz-row [nzGutter]="16">
+    <div nz-col [nzSpan]="24" class="chart-container-col chart-container-first-col">
+      <nz-card [nzTitle]="'monitor.real_time_trading' | translate" nzSize="small">
+        <div nz-row [nzGutter]="16" class="feedback-card">
+          <div nz-col nzMd="24" nzLg="12">
+            <div class="feedback-monitor">
+              <div nz-row [nzGutter]="16" class="feedback-container" *ngIf="liveData; else emptyChart">
+                <ng-container *ngFor="let data of liveData; trackBy: trackByValue">
+                  <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6" nzXl="6">
+                    <ng-container *ngIf="data.series; else emptyChart">
+                      <div class="live-monitor-charts">
+                        <bixi-chart-progress [grid]="data.grid" [series]="data.series" [title]="data.title"></bixi-chart-progress>
+                      </div>
+                      <div class="progress-message">
+                        <div class="progress-message-title ellipsis">{{data.source}}</div>
+                        <div class="progress-message-sub-title ellipsis">
+                          {{'monitor.feedback_count' | translate}} {{data.total || '-'}}
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <div class="hot-forecast">
+              <bixi-chart-line *ngIf="hotForecast; else emptyChart" [types]="hotForecast.types" [series]="hotForecast.series"
+                [legend]="hotForecast.legend" [grid]="hotForecast.grid">
+              </bixi-chart-line>
+            </div>
+          </div>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12" class="chart-container-col">
+      <nz-card [nzTitle]="'monitor.user_browser' | translate" [nzExtra]="extraTemplate" nzSize="small">
+        <div class="overview-charts" *ngIf="userBrowser; else emptyChart">
+          <bixi-chart-bar [legend]="userBrowser.legend" model="horizontal" [grid]="userBrowser.grid" [series]="userBrowser.series"
+            [types]="userBrowser.types"></bixi-chart-bar>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12" class="chart-container-col">
+      <nz-card [nzTitle]="'monitor.top_brand' | translate" [nzExtra]="extraTemplate" nzSize="small">
+        <div class="overview-charts" *ngIf="salesRank; else emptyChart">
+          <bixi-chart-progress #progressChart [series]="salesRank.series" [title]="salesRank.title" [legend]="salesRank.legend">
+          </bixi-chart-progress>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12" class="chart-container-col">
+      <nz-card [nzTitle]="'monitor.user_platform' | translate" [nzExtra]="extraTemplate" nzSize="small">
+        <div class="overview-charts" *ngIf="platformRevenue; else emptyChart">
+          <bixi-chart-bar model="horizontal" [series]="platformRevenue.series" [grid]="platformRevenue.grid" [types]=" platformRevenue.types">
+          </bixi-chart-bar>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12" class="chart-container-col">
+      <nz-card [nzTitle]="'monitor.user_gender' | translate" [nzExtra]="extraTemplate" nzSize="small">
+        <div class="overview-charts" *ngIf="userGender; else emptyChart">
+          <bixi-chart-pie [series]="userGender.series"></bixi-chart-pie>
+        </div>
+      </nz-card>
+    </div>
+  </div>
+</shared-page-container>
+
+<ng-template #emptyChart>
+  <nz-skeleton [nzParagraph]="{ rows: 4, width: ['70%', '80%', '95%', '45%'] }" [nzActive]="true"></nz-skeleton>
+</ng-template>
+
+<ng-template #extraTemplate>
+  <nz-range-picker [nzRanges]="ranges" nzShowTime nzFormat="yyyy/MM/dd" [(ngModel)]="dates"></nz-range-picker>
+</ng-template>

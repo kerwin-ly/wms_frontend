@@ -1,0 +1,62 @@
+@import 'color';
+@import 'layout';
+
+@content-width: 920px;
+@header-height: 60px;
+@footer-height: 86px;
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 1280px;
+  height: 100%;
+  min-height: 600px;
+  overflow: auto;
+  background-color: rgba(24, 33, 55, 1);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  header {
+    display: flex;
+    align-items: center;
+    height: @header-height;
+    margin-bottom: 1px;
+    box-shadow: 0 1px 2px 0 rgba(57, 71, 102, 1);
+
+    content {
+      display: block;
+      width: @content-width;
+      margin: 0 auto;
+    }
+  }
+
+  main {
+    flex: 1;
+    width: @content-width;
+    margin: 0 auto;
+    overflow: hidden;
+
+    content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8%;
+
+      .form {
+        width: 362px;
+      }
+    }
+
+    @media screen and (min-height: 760px) {
+      content {
+        margin-top: 18%;
+      }
+    }
+  }
+
+  footer {
+    height: @footer-height;
+    font-weight: 300;
+  }
+}

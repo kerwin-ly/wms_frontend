@@ -1,0 +1,8 @@
+<div class='passport-slogan'>
+  <h2 *ngIf="title">{{ title |  translate}}</h2>
+  <div class='slogan-content'>
+    <div class='slogan-content-item' *ngFor="let slogan of items">
+      <i nz-icon nzType="icons:layout/introduction" class="ic-intro"></i>{{slogan}}
+    </div>
+  </div>
+</div>

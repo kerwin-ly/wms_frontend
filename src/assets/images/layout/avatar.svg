@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="29px" viewBox="0 0 28 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12,15.3790069 C14.4648165,15.3790069 16,12.4922867 16,10.2043737 C16,7.91646072 14.3241109,6 12,6 C9.67588909,6 8,7.84608968 8,10.2043737 C8,12.5626577 9.5351835,15.3790069 12,15.3790069 Z" id="path-1"></path>
+        <filter x="-200.0%" y="-149.3%" width="500.0%" height="441.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.0420138831   0 0 0 0 0.308993909   0 0 0 0 0.590806159  0 0 0 0.15 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="layout2020-07-17备份" transform="translate(-3138.000000, -3532.000000)">
+            <g id="编组-14备份-15" transform="translate(3124.000000, 3534.000000)">
+                <g id="icon_myself" transform="translate(16.000000, 0.000000)">
+                    <g id="编组-10">
+                        <circle id="椭圆形" stroke="#107CEE" stroke-width="0.8" fill="#FFFFFF" cx="12" cy="12" r="11.6"></circle>
+                        <circle id="椭圆形" fill="#C0D2FA" cx="12" cy="12" r="9"></circle>
+                        <rect id="矩形" fill="#FFFFFF" x="10" y="13" width="4" height="4"></rect>
+                        <ellipse id="椭圆形备份-2" fill="#FFFFFF" cx="12" cy="19.5" rx="7" ry="3.5"></ellipse>
+                        <g id="椭圆形">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

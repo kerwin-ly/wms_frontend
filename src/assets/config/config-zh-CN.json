@@ -1,0 +1,111 @@
+{
+  "settings": {
+    "title": "BIXI PRO",
+    "favicon": "./favicon.ico",
+    "avatar": "./assets/images/layout/avatar.svg",
+    "login": {
+      "header": {
+        "logo": "./assets/images/layout/logo-large.svg"
+      },
+      "main": {
+        "background": "./assets/images/layout/login-bg.png",
+        "slogan": {
+          "title": "中后台前端解决方案",
+          "items": [
+            "基于 Antd Design 设计语言，强大的设计和产品团队提供支持",
+            "测试覆盖率全，久经生产考验，强大的技术和测试团队提供支持",
+            "封装克制，API 优雅，内置暗黑模式，支持皮肤定制等功能",
+            "没有复杂依赖，100% 开启 OnPush 模式，性能出众"
+          ]
+        }
+      },
+      "footer": {
+        "links": [
+          {
+            "text": "达观官网",
+            "link": "http://www.datagrand.com?utm_source=bixi_pro&utm_medium=login"
+          },
+          {
+            "text": "赑屃组件",
+            "link": "http://bixi.datagrand.com/zh?utm_source=bixi_pro&utm_medium=login"
+          },
+          {
+            "text": "代码仓库",
+            "link": "https://git.datagrand.com/frontend_utils/bixi_pro"
+          },
+          {
+            "text": "关于我们",
+            "link": "http://www.datagrand.com/about.html?utm_source=bixi_pro&utm_medium=login"
+          }
+        ],
+        "copyright": "Copyright DataGrand Tech Inc. All Rights Reserved. 沪ICP备15028292-1号"
+      }
+    },
+    "menu": {
+      "logoSmall": "./assets/images/layout/logo-small.svg",
+      "logoLarge": "./assets/images/layout/logo-large.svg"
+    },
+    "sentry": {
+      "open": false,
+      "dsn": ""
+    }
+  },
+  "menus": [
+    {
+      "titleI18n": "menu.monitor",
+      "icon": "area-chart",
+      "children": [
+        {
+          "titleI18n": "monitor.overview",
+          "link": "/dashboard/overview"
+        },
+        {
+          "titleI18n": "monitor.data_analysis",
+          "link": "/dashboard/data-analysis"
+        }
+      ]
+    },
+    {
+      "titleI18n": "menu.list",
+      "icon": "unordered-list",
+      "children": [
+        {
+          "titleI18n": "list.simple_list",
+          "link": "/list/simple-list"
+        },
+        {
+          "titleI18n": "list.advanced_list",
+          "link": "/list/advanced-list"
+        }
+      ]
+    },
+    {
+      "titleI18n": "menu.form",
+      "icon": "form",
+      "children": [
+        {
+          "titleI18n": "form.basic_form",
+          "link": "/form/basic-form"
+        },
+        {
+          "titleI18n": "form.group_form",
+          "link": "/form/group-form"
+        },
+        {
+          "titleI18n": "form.step_form",
+          "link": "/form/step-form"
+        }
+      ]
+    },
+    {
+      "titleI18n": "menu.setting",
+      "icon": "setting",
+      "children": [
+        {
+          "titleI18n": "menu.setting_permissions",
+          "link": "/setting"
+        }
+      ]
+    }
+  ]
+}

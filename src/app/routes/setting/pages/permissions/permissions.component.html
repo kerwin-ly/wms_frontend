@@ -1,0 +1,9 @@
+<shared-page-container>
+  <nz-alert nzType="success" nzMessage="注意查看【增删改查-用户管理】的视图变化，在关闭查看权限后，不仅菜单上无法查看，直接通过浏览器地址访问也会被拦截"></nz-alert>
+  <br>
+  <div *ngFor="let permission of allPermissions">
+    <label nz-checkbox [ngModel]="checkedPermissions.includes(permission)" (ngModelChange)="onChecked($event, permission)">
+      {{ 'permissions.' + permission  | translate}}
+    </label>
+  </div>
+</shared-page-container>

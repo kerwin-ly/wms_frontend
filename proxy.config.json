@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "http://yapi.datagrand.com/mock/30",
+    "secure": true,
+    "changeOrigin": true
+  }
+}

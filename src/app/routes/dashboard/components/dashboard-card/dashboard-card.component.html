@@ -1,0 +1,16 @@
+<div class="dashboard-card">
+  <div class="dashboard-card-header">
+    <div class="dashboard-card-header-icon">
+      <i nz-icon [nzType]="icon"></i>
+    </div>
+    <div class="dashboard-card-header-title ellipsis">{{title || '-'}}</div>
+  </div>
+  <div class="dashboard-card-content">
+    <div class="dashboard-card-content-data">
+      {{data || '-'}}
+    </div>
+    <div class="dashboard-card-content-trend ellipsis">
+      {{ 'monitor.dod_change' | translate}} <i nz-icon [nzType]="raise ? 'icons/monitor:up' : 'icons/monitor:down'"></i> {{trend}}%
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+* {
+  outline: none;
+}
+
+body {
+  background: #fff !important;
+}
+
+&::-webkit-scrollbar {
+  display: flex;
+  width: 6px;
+  height: 6px;
+}
+
+&::-webkit-scrollbar-thumb {
+  background-color: #6e6e6e;
+  outline: #333 solid 1px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
+  width: 100%;
+  height: 100%;
+}

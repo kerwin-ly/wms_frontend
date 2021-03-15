@@ -1,0 +1,11 @@
+<div class="passport-login-footer">
+  <div class="passport-login-footer-link">
+    <ng-container *ngFor="let link of links;  let i = index">
+      <a [href]="link.link" target='blank'>{{link.text}}</a>
+      <nz-divider nzType="vertical" *ngIf="i !== links.length - 1"></nz-divider>
+    </ng-container>
+  </div>
+  <div class="passport-login-footer-copy">
+    {{copyright}}
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div *ngIf="isSpin" class="global-spin-l">
+  <nz-spin
+    nzSimple
+    nzTip="Loading..."
+    class="global-spin-l"
+    [ngStyle]="{ width: size + 'px', height: size + 'px', left: '8%' }"
+    [nzSpinning]="isSpin"
+    [nzDelay]="300"
+  >
+  </nz-spin>
+</div>

@@ -1,0 +1,97 @@
+@import 'color';
+@import 'layout';
+
+@action-item-height: 28px;
+
+:host {
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+}
+
+.layout-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 52px;
+  padding: 3px 0 6px 8px;
+  color: @bixi-blue;
+  border-radius: 2px;
+  cursor: pointer;
+
+  .user-info {
+    height: 32px;
+    padding: 5px 8px;
+    color: rgba(0, 0, 0, 0.65);
+    border-radius: 2px;
+    cursor: pointer;
+
+    &:hover {
+      color: #107cee;
+    }
+
+    &.focus {
+      color: #107cee;
+      background: rgba(246, 246, 247, 1);
+    }
+  }
+
+  &:hover {
+    .user-info {
+      background: rgba(246, 246, 247, 1);
+    }
+  }
+}
+
+.action {
+  width: 158px;
+  height: @action-item-height;
+  line-height: @action-item-height;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    color: @bixi-blue;
+  }
+
+  &.i18n-action {
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+  }
+
+  &.i18n-action-title {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+::ng-deep .dropdown-user-info-submenu {
+  box-shadow: 0 5px 10px 0 rgba(41, 48, 91, 0.1);
+}
+
+::ng-deep .dropdown-user-info {
+  width: 204px;
+  box-shadow: 0 5px 10px 0 rgba(41, 48, 91, 0.1);
+
+  .ant-dropdown-menu-item {
+    padding: 5px 16px;
+  }
+
+  .ant-dropdown-menu-submenu-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 16px;
+    padding-right: 38px;
+
+    &:hover {
+      svg {
+        fill: @bixi-blue;
+      }
+    }
+  }
+
+  .ant-dropdown-menu-submenu-arrow {
+    top: 8px;
+    right: 16px;
+  }
+}

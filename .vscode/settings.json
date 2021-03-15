@@ -1,0 +1,61 @@
+{
+    "window.zoomLevel": 0,
+    "editor.rulers": [
+      150
+    ],
+    "html.format.wrapLineLength": 150,
+    "html.format.endWithNewline": true,
+    "explorer.confirmDragAndDrop": false,
+    "html.format.wrapAttributes": "auto",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDelete": true,
+    "git.ignoreLegacyWarning": true,
+    "terminal.integrated.rendererType": "dom",
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "editor.suggestSelection": "first",
+    "editor.tabSize": 2,
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/*/**": true,
+      "**/dist/*/**": true,
+      "**/coverage/*/**": true
+    },
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      // For ESLint
+      "source.fixAll.eslint": true,
+      // For TSLint
+      "source.fixAll.tslint": true,
+      // For Stylelint
+      "source.fixAll.stylelint": true,
+    },
+    "[markdown]": {
+      "editor.formatOnSave": false
+    },
+    "[javascript]": {
+      "editor.formatOnSave": false
+    },
+    "[json]": {
+      "editor.formatOnSave": false
+    },
+    "[jsonc]": {
+      "editor.formatOnSave": false
+    },
+    "files.associations": {
+      "*.conf": "shellscript",
+      "*.json": "jsonc",
+      ".prettierrc": "json",
+      ".stylelintrc": "json",
+      ".htmlhintrc": "json"
+    },
+    "cSpell.words": [
+      "Antd",
+      "Bixi",
+      "Gitlab",
+      "anticon",
+      "submenu",
+      "tabset"
+    ]
+  }

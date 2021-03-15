@@ -1,0 +1,32 @@
+<div class="passport-login-form">
+  <div class="wrap">
+    <div class="title">
+      <span>{{ 'passport.sign_in' | translate  }}</span>
+    </div>
+    <div class="center">
+      <form nz-form [formGroup]="form" nzLayout="horizontal" (ngSubmit)="onSubmit()" role="form">
+        <div class="error-panel" *ngIf="errorMsg" >
+          <nz-alert nzType="error" [nzMessage]="errorMsg" nzShowIcon></nz-alert>
+        </div>
+        <nz-form-item>
+          <nz-form-control>
+            <input nzSize="large" placeholder="bixi"  nz-input formControlName="account" >
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <input nzSize="large" type="password" placeholder="bixi" nz-input  formControlName="password">
+          </nz-form-control>
+        </nz-form-item>
+        <div class="actions">
+          <label nz-checkbox formControlName="remember">
+            <span> {{ 'passport.remember_account' | translate }}</span>
+          </label>
+        </div>
+        <button nz-button type="submit" [nzLoading]="loading" class="btn-login" nzType="primary" nzSize="large" nzBlock>
+          {{ 'passport.sign_in' | translate }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

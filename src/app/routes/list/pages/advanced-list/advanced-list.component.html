@@ -1,0 +1,29 @@
+<shared-page-container>
+  <bixi-filter
+    key="list-advanced-list-table"
+    [(filterParams)]="filterParams"
+    [strategies]="strategies"
+    (search)="getTaskList()"
+    [(cols)]="cols"
+    [showKeyword]="true"
+    >
+    <bixi-filter-actions>
+      <button nz-button  nzType="primary" [routerLink]="['/form/basic-form']">
+        <i nz-icon nzType="plus"></i>{{'list.add' | translate}}
+      </button>
+      &nbsp;
+      <button nz-button  nzType="default" [disabled]="!selectedKeys.length">
+        {{'list.batch_delete' | translate}}
+      </button>
+    </bixi-filter-actions>
+  </bixi-filter>
+  <bixi-table
+    [rows]="rows"
+    [cols]="cols"
+    [(selectedKeys)]="selectedKeys"
+    [(filterParams)]="filterParams"
+    [(pagination)]="pagination"
+    [loading]="loading"
+    (search)="getTaskList()">
+  </bixi-table>
+</shared-page-container>

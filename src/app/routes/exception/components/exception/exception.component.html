@@ -1,0 +1,10 @@
+<div class="exception-img-block">
+  <div class="exception-img" [style.backgroundImage]="_img"></div>
+</div>
+<div class="exception-cont">
+  <h1 class="exception-cont-title" [innerHTML]="_title"></h1>
+  <div class="exception-cont-desc" [innerHTML]="_desc || exceptionDesc[_type]"></div>
+  <div class="exception-cont-actions">
+    <button nz-button [routerLink]="['/']" [nzType]="'primary'">返回首页</button>
+  </div>
+</div>

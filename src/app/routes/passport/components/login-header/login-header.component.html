@@ -1,0 +1,9 @@
+<div class="passport-login-header">
+  <img [src]="logo" alt="" *ngIf="logo" width="126px">
+  <div class="select-language">
+    <i nz-icon nzType="icons:layout/language"></i>
+    <nz-select [(ngModel)]="lang" (ngModelChange)="onSwitchLang()" nzBorderless nzSuffixIcon="caret-down" [nzDropdownMatchSelectWidth]="false">
+      <nz-option [nzValue]="option.value" [nzLabel]="option.text" *ngFor="let option of langList"></nz-option>
+    </nz-select>
+  </div>
+</div>
