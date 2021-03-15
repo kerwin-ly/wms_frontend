@@ -1,0 +1,10 @@
+export { ResGetApiWarehouseInList } from './models/warehouse';
+export { WarehouseInPostParams } from './models/warehouse';
+export { WarehouseOutPostParams } from './models/warehouse';
+export { ResGetWarehouseOutList } from './models/warehouse';
+export { ResGetWarehouseList } from './models/warehouse';
+export { ResGetWarehouseBatch } from './models/warehouse';
+export { ResGetWarehouseHistory } from './models/warehouse';
+export { ResGetApiGoodsList } from './models/goods';
+export { ApiGoodsPostParams } from './models/goods';
+export { GoodsIdPutParams } from './models/goods';

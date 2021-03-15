@@ -13,7 +13,7 @@ import { RoutesModule } from './routes/routes.module';
 import { LayoutModule } from './layouts/layout.module';
 import { BixiProgressModule } from '@bixi/progress';
 import { ZorroModule } from '@modules/zorro/zorro.module';
-
+import { ApiModule } from './api/api.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -21,15 +21,14 @@ import { ZorroModule } from '@modules/zorro/zorro.module';
     RoutesModule,
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    // app.component 会依赖 modal
+    HttpClientModule, // app.component 会依赖 modal
     NzModalModule,
-    ZorroModule,
-    // 以下这两个特性模块有可能会拖出 zorro，为了保证main bundle 小一些，这里不要直接依赖 shared module
+    ZorroModule, // 以下这两个特性模块有可能会拖出 zorro，为了保证main bundle 小一些，这里不要直接依赖 shared module
     LayoutModule,
     BixiProgressModule.forRoot({}),
     ...I18N_MODULES,
-    ...MOCK_MODULES
+    ...MOCK_MODULES,
+    ApiModule.forRoot({ rootUrl: '.' })
   ],
   providers: [
     ...NET_PROVIDES,

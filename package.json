@@ -5,6 +5,7 @@
 		"ng": "ng",
 		"start": "yarn dev",
 		"dev": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng serve -o --host 0.0.0.0 --port 3009 --proxy-config proxy.config.json",
+		"dev:mock": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng serve -o --host 0.0.0.0 --port 3009 --proxy-config proxy.config.mock.json",
 		"build": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --prod --build-optimizer",
 		"test": "ng test",
 		"e2e": "ng e2e",
@@ -88,5 +89,8 @@
 		}
 	},
 	"license": "no license",
-	"description": "An angular project"
+	"description": "An angular project",
+	"config": {
+		"yapi": "http://yapi.datagrand.com/project/156/interface/api"
+	}
 }
