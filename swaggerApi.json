@@ -100,7 +100,140 @@
 				}
 			}
 		},
-		"/warehouse/in": {
+		"/api/warehouse/in/:id": {
+			"delete": {
+				"tags": [
+					"warehouse"
+				],
+				"summary": "删除入库信息",
+				"description": "",
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"$schema": "http://json-schema.org/draft-04/schema#",
+							"type": "object",
+							"properties": {
+								"code": {
+									"type": "number",
+									"mock": {
+										"mock": "200"
+									}
+								},
+								"msg": {
+									"type": "string"
+								},
+								"data": {
+									"type": "null"
+								}
+							},
+							"required": [
+								"code",
+								"msg",
+								"data"
+							]
+						}
+					}
+				}
+			}
+		},
+		"/api/warehouse/out/:id": {
+			"delete": {
+				"tags": [
+					"warehouse"
+				],
+				"summary": "删除出库信息",
+				"description": "",
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "page_index",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "page_size",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "word",
+						"in": "query",
+						"required": true,
+						"description": "类目名称",
+						"type": "string"
+					},
+					{
+						"name": "start_date",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "end_date",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"$schema": "http://json-schema.org/draft-04/schema#",
+							"type": "object",
+							"properties": {
+								"code": {
+									"type": "number",
+									"mock": {
+										"mock": "200"
+									}
+								},
+								"msg": {
+									"type": "string"
+								},
+								"data": {
+									"type": "null"
+								}
+							},
+							"required": [
+								"code",
+								"msg",
+								"data"
+							]
+						}
+					}
+				}
+			}
+		},
+		"/api/warehouse/in": {
 			"post": {
 				"tags": [
 					"warehouse"
@@ -115,7 +248,7 @@
 						"name": "params",
 						"in": "body",
 						"schema": {
-							"$ref": "#/definitions/warehouse/WarehouseInPostParams"
+							"$ref": "#/definitions/warehouse/ApiWarehouseInPostParams"
 						}
 					}
 				],
@@ -149,7 +282,7 @@
 				}
 			}
 		},
-		"/warehouse/out": {
+		"/api/warehouse/out": {
 			"post": {
 				"tags": [
 					"warehouse"
@@ -164,7 +297,7 @@
 						"name": "params",
 						"in": "body",
 						"schema": {
-							"$ref": "#/definitions/warehouse/WarehouseOutPostParams"
+							"$ref": "#/definitions/warehouse/ApiWarehouseOutPostParams"
 						}
 					}
 				],
@@ -198,7 +331,7 @@
 				}
 			}
 		},
-		"/warehouse/out/list": {
+		"/api/warehouse/out/list": {
 			"get": {
 				"tags": [
 					"warehouse"
@@ -259,7 +392,7 @@
 									"type": "string"
 								},
 								"data": {
-									"$ref": "#/definitions/warehouse/ResGetWarehouseOutList"
+									"$ref": "#/definitions/warehouse/ResGetApiWarehouseOutList"
 								}
 							},
 							"required": [
@@ -272,7 +405,7 @@
 				}
 			}
 		},
-		"/warehouse/list": {
+		"/api/warehouse/list": {
 			"get": {
 				"tags": [
 					"warehouse"
@@ -319,7 +452,7 @@
 									"type": "string"
 								},
 								"data": {
-									"$ref": "#/definitions/warehouse/ResGetWarehouseList"
+									"$ref": "#/definitions/warehouse/ResGetApiWarehouseList"
 								}
 							},
 							"required": [
@@ -332,12 +465,12 @@
 				}
 			}
 		},
-		"/warehouse/batch": {
+		"/api/warehouse/batch": {
 			"get": {
 				"tags": [
 					"warehouse"
 				],
-				"summary": "库存批次详情",
+				"summary": "库存剩余批次详情",
 				"description": "",
 				"parameters": [
 					{
@@ -365,20 +498,20 @@
 									"type": "string"
 								},
 								"data": {
-									"$ref": "#/definitions/warehouse/ResGetWarehouseBatch"
+									"$ref": "#/definitions/warehouse/ResGetApiWarehouseBatch"
 								}
 							},
 							"required": [
+								"data",
 								"code",
-								"msg",
-								"data"
+								"msg"
 							]
 						}
 					}
 				}
 			}
 		},
-		"/warehouse/history": {
+		"/api/warehouse/history": {
 			"get": {
 				"tags": [
 					"warehouse"
@@ -406,6 +539,20 @@
 						"required": true,
 						"description": "类目名称",
 						"type": "string"
+					},
+					{
+						"name": "start_date",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "end_date",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -425,7 +572,7 @@
 									"type": "string"
 								},
 								"data": {
-									"$ref": "#/definitions/warehouse/ResGetWarehouseHistory"
+									"$ref": "#/definitions/warehouse/ResGetApiWarehouseHistory"
 								}
 							},
 							"required": [
@@ -438,7 +585,7 @@
 				}
 			}
 		},
-		"/goods": {
+		"/api/goods": {
 			"delete": {
 				"tags": [
 					"goods"
@@ -466,6 +613,53 @@
 							"properties": {
 								"code": {
 									"type": "number"
+								},
+								"msg": {
+									"type": "string"
+								},
+								"data": {
+									"type": "null"
+								}
+							},
+							"required": [
+								"code",
+								"msg",
+								"data"
+							]
+						}
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"goods"
+				],
+				"summary": "新增商品",
+				"description": "",
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "params",
+						"in": "body",
+						"schema": {
+							"$ref": "#/definitions/goods/ApiGoodsPostParams"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"$schema": "http://json-schema.org/draft-04/schema#",
+							"type": "object",
+							"properties": {
+								"code": {
+									"type": "number",
+									"mock": {
+										"mock": "200"
+									}
 								},
 								"msg": {
 									"type": "string"
@@ -544,56 +738,7 @@
 				}
 			}
 		},
-		"/api/goods": {
-			"post": {
-				"tags": [
-					"goods"
-				],
-				"summary": "新增商品",
-				"description": "",
-				"consumes": [
-					"application/json"
-				],
-				"parameters": [
-					{
-						"name": "params",
-						"in": "body",
-						"schema": {
-							"$ref": "#/definitions/goods/ApiGoodsPostParams"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "successful operation",
-						"schema": {
-							"$schema": "http://json-schema.org/draft-04/schema#",
-							"type": "object",
-							"properties": {
-								"code": {
-									"type": "number",
-									"mock": {
-										"mock": "200"
-									}
-								},
-								"msg": {
-									"type": "string"
-								},
-								"data": {
-									"type": "null"
-								}
-							},
-							"required": [
-								"code",
-								"msg",
-								"data"
-							]
-						}
-					}
-				}
-			}
-		},
-		"/goods/:id": {
+		"/api/goods/:id": {
 			"put": {
 				"tags": [
 					"goods"
@@ -615,7 +760,7 @@
 						"name": "params",
 						"in": "body",
 						"schema": {
-							"$ref": "#/definitions/goods/GoodsIdPutParams"
+							"$ref": "#/definitions/goods/ApiGoodsIdPutParams"
 						}
 					}
 				],
@@ -653,21 +798,32 @@
 				"type": "object",
 				"properties": {
 					"total": {
-						"type": "string",
+						"type": "number",
 						"mock": {
-							"mock": "@integer"
-						}
+							"mock": "@natural"
+						},
+						"minimum": 10,
+						"maximum": 100,
+						"exclusiveMinimum": true,
+						"exclusiveMaximum": true
 					},
 					"items": {
 						"type": "array",
 						"items": {
 							"type": "object",
 							"properties": {
-								"name": {
+								"goods_name": {
 									"type": "string",
 									"description": "类目名",
 									"mock": {
 										"mock": "@ctitle"
+									}
+								},
+								"id": {
+									"type": "number",
+									"description": "记录id",
+									"mock": {
+										"mock": "@id"
 									}
 								},
 								"price": {
@@ -677,7 +833,7 @@
 									},
 									"description": "单价"
 								},
-								"num": {
+								"in_num": {
 									"type": "number",
 									"description": "数量",
 									"mock": {
@@ -686,7 +842,7 @@
 								},
 								"in_type": {
 									"type": "number",
-									"description": "入库类型",
+									"description": "入库类型。0:采购入库，1:赠送入库，2:盘盈入库",
 									"enum": [
 										0,
 										1,
@@ -704,7 +860,7 @@
 									},
 									"description": "入库时间"
 								},
-								"id": {
+								"goods_id": {
 									"type": "number",
 									"mock": {
 										"mock": "@id"
@@ -713,12 +869,13 @@
 								}
 							},
 							"required": [
-								"name",
+								"goods_name",
 								"price",
-								"num",
+								"in_num",
 								"in_type",
 								"in_code",
 								"in_date",
+								"goods_id",
 								"id"
 							]
 						}
@@ -729,7 +886,7 @@
 					"items"
 				]
 			},
-			"WarehouseInPostParams": {
+			"ApiWarehouseInPostParams": {
 				"$schema": "http://json-schema.org/draft-04/schema#",
 				"type": "object",
 				"properties": {
@@ -738,7 +895,7 @@
 						"items": {
 							"type": "object",
 							"properties": {
-								"id": {
+								"goods_id": {
 									"type": "number",
 									"description": "类目id"
 								},
@@ -746,7 +903,7 @@
 									"type": "number",
 									"description": "单价"
 								},
-								"num": {
+								"in_num": {
 									"type": "number",
 									"description": "入库数量"
 								},
@@ -756,38 +913,46 @@
 								}
 							},
 							"required": [
-								"id",
+								"goods_id",
 								"price",
-								"num",
+								"in_num",
 								"in_type"
 							]
 						}
 					}
 				}
 			},
-			"WarehouseOutPostParams": {
+			"ApiWarehouseOutPostParams": {
+				"$schema": "http://json-schema.org/draft-04/schema#",
 				"type": "object",
-				"title": "title",
 				"properties": {
-					"goods_id": {
-						"type": "number",
-						"description": "类目id"
-					},
-					"num": {
-						"type": "string",
-						"description": "出库数量"
+					"out_list": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"goods_id": {
+									"type": "number"
+								},
+								"num": {
+									"type": "number"
+								}
+							}
+						}
 					}
 				},
 				"required": [
-					"goods_id",
-					"num"
+					"out_list"
 				]
 			},
-			"ResGetWarehouseOutList": {
+			"ResGetApiWarehouseOutList": {
 				"type": "object",
 				"properties": {
 					"total": {
-						"type": "string"
+						"type": "number",
+						"mock": {
+							"mock": "@natural"
+						}
 					},
 					"items": {
 						"type": "array",
@@ -796,23 +961,42 @@
 							"properties": {
 								"goods_id": {
 									"type": "number",
-									"description": "类目id"
+									"description": "类目id",
+									"mock": {
+										"mock": "@id"
+									}
 								},
 								"goods_name": {
 									"type": "string",
-									"description": "类目名称"
+									"description": "类目名称",
+									"mock": {
+										"mock": "@ctitle"
+									}
 								},
 								"out_num": {
-									"type": "string",
-									"description": "出库数量"
+									"type": "number",
+									"description": "出库数量",
+									"mock": {
+										"mock": "@natural"
+									}
 								},
 								"out_code": {
 									"type": "string",
-									"description": "出库单号"
+									"description": "出库单号",
+									"mock": {
+										"mock": "@id"
+									}
 								},
 								"out_date": {
 									"type": "string",
-									"description": "出库时间"
+									"description": "出库时间",
+									"mock": {
+										"mock": "@datetime"
+									}
+								},
+								"id": {
+									"type": "number",
+									"description": "记录id"
 								}
 							},
 							"required": [
@@ -820,7 +1004,8 @@
 								"goods_name",
 								"out_num",
 								"out_code",
-								"out_date"
+								"out_date",
+								"id"
 							]
 						}
 					}
@@ -830,11 +1015,16 @@
 					"items"
 				]
 			},
-			"ResGetWarehouseList": {
+			"ResGetApiWarehouseList": {
 				"type": "object",
 				"properties": {
 					"total": {
-						"type": "number"
+						"type": "number",
+						"mock": {
+							"mock": "@natural"
+						},
+						"minimum": 0,
+						"maximum": 1000
 					},
 					"items": {
 						"type": "array",
@@ -842,22 +1032,51 @@
 							"type": "object",
 							"properties": {
 								"goods_id": {
-									"type": "number"
+									"type": "integer",
+									"mock": {
+										"mock": "@id"
+									},
+									"description": "商品id"
+								},
+								"id": {
+									"type": "number",
+									"mock": {
+										"mock": "@id"
+									},
+									"description": "库存id"
 								},
 								"goods_name": {
-									"type": "string"
+									"type": "string",
+									"mock": {
+										"mock": "@ctitle"
+									},
+									"description": "商品名称"
 								},
 								"cost": {
-									"type": "string",
-									"description": "总成本"
+									"type": "number",
+									"description": "总成本",
+									"mock": {
+										"mock": "@integer"
+									}
+								},
+								"num": {
+									"type": "number",
+									"mock": {
+										"mock": "@integer"
+									},
+									"description": "库存数量"
 								}
 							},
 							"required": [
 								"goods_id",
 								"goods_name",
-								"cost"
+								"cost",
+								"num",
+								"id"
 							]
-						}
+						},
+						"minItems": 10,
+						"maxItems": 10
 					}
 				},
 				"required": [
@@ -865,9 +1084,17 @@
 					"items"
 				]
 			},
-			"ResGetWarehouseBatch": {
+			"ResGetApiWarehouseBatch": {
 				"type": "object",
 				"properties": {
+					"total": {
+						"type": "number",
+						"mock": {
+							"mock": "@natural"
+						},
+						"minimum": 10,
+						"maximum": 100
+					},
 					"items": {
 						"type": "array",
 						"items": {
@@ -905,10 +1132,11 @@
 					}
 				},
 				"required": [
+					"total",
 					"items"
 				]
 			},
-			"ResGetWarehouseHistory": {
+			"ResGetApiWarehouseHistory": {
 				"type": "object",
 				"properties": {
 					"total": {
@@ -920,23 +1148,48 @@
 							"type": "object",
 							"properties": {
 								"goods_id": {
-									"type": "number"
+									"type": "number",
+									"mock": {
+										"mock": "@id"
+									}
 								},
 								"goods_name": {
-									"type": "string"
+									"type": "string",
+									"mock": {
+										"mock": "@ctitle"
+									}
 								},
 								"operation": {
-									"type": "number"
+									"type": "number",
+									"exclusiveMinimum": false,
+									"exclusiveMaximum": false,
+									"enum": [
+										0,
+										1,
+										2,
+										3
+									],
+									"description": "操作类型，0:采购入库，1:赠送入库，2:盘盈入库，3:出库"
 								},
 								"date": {
-									"type": "string"
+									"type": "string",
+									"mock": {
+										"mock": "@datetime"
+									}
+								},
+								"num": {
+									"type": "number",
+									"mock": {
+										"mock": "@natural"
+									}
 								}
 							},
 							"required": [
 								"goods_id",
 								"goods_name",
 								"operation",
-								"date"
+								"date",
+								"num"
 							]
 						}
 					}
@@ -948,6 +1201,19 @@
 			}
 		},
 		"goods": {
+			"ApiGoodsPostParams": {
+				"type": "object",
+				"title": "title",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "商品名称"
+					}
+				},
+				"required": [
+					"name"
+				]
+			},
 			"ResGetApiGoodsList": {
 				"type": "object",
 				"properties": {
@@ -971,25 +1237,20 @@
 										"mock": "@cname"
 									}
 								}
-							}
+							},
+							"required": [
+								"id",
+								"name"
+							]
 						}
-					}
-				}
-			},
-			"ApiGoodsPostParams": {
-				"type": "object",
-				"title": "title",
-				"properties": {
-					"name": {
-						"type": "string",
-						"description": "商品名称"
 					}
 				},
 				"required": [
-					"name"
+					"items",
+					"total"
 				]
 			},
-			"GoodsIdPutParams": {
+			"ApiGoodsIdPutParams": {
 				"type": "object",
 				"title": "title",
 				"properties": {

@@ -52,60 +52,31 @@
   },
   "menus": [
     {
-      "titleI18n": "menu.monitor",
+      "titleI18n": "库存管理",
       "icon": "area-chart",
       "children": [
         {
-          "titleI18n": "monitor.overview",
-          "link": "/dashboard/overview"
+          "titleI18n": "总览",
+          "link": "/warehouse/store"
         },
         {
-          "titleI18n": "monitor.data_analysis",
-          "link": "/dashboard/data-analysis"
+          "titleI18n": "入库",
+          "link": "/warehouse/in"
+        },
+        {
+          "titleI18n": "出库",
+          "link": "/warehouse/out"
+        },
+        {
+          "titleI18n": "明细",
+          "link": "/warehouse/history"
         }
       ]
     },
     {
-      "titleI18n": "menu.list",
-      "icon": "unordered-list",
-      "children": [
-        {
-          "titleI18n": "list.simple_list",
-          "link": "/list/simple-list"
-        },
-        {
-          "titleI18n": "list.advanced_list",
-          "link": "/list/advanced-list"
-        }
-      ]
-    },
-    {
-      "titleI18n": "menu.form",
-      "icon": "form",
-      "children": [
-        {
-          "titleI18n": "form.basic_form",
-          "link": "/form/basic-form"
-        },
-        {
-          "titleI18n": "form.group_form",
-          "link": "/form/group-form"
-        },
-        {
-          "titleI18n": "form.step_form",
-          "link": "/form/step-form"
-        }
-      ]
-    },
-    {
-      "titleI18n": "menu.setting",
-      "icon": "setting",
-      "children": [
-        {
-          "titleI18n": "menu.setting_permissions",
-          "link": "/setting"
-        }
-      ]
+      "titleI18n": "类目管理",
+      "icon": "area-chart",
+      "link": "/goods/list"
     }
   ]
 }

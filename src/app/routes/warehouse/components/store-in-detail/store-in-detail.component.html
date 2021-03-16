@@ -1,0 +1,65 @@
+<nz-table #basicTable [nzData]="storeInList" nzShowPagination="false">
+  <thead>
+    <tr>
+      <th>类目名</th>
+      <th>单价</th>
+      <th>数量</th>
+      <th>入库类型</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data; let index = index">
+      <td>
+        <nz-select
+          class="select-sm"
+          nzAllowClear
+          nzShowSearch
+          nzServerSearch
+          (nzOnSearch)="getGoodsList($event)"
+          [(ngModel)]="data.goods_id"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <nz-option *ngFor="let item of goodsList" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
+        </nz-select>
+      </td>
+      <td>
+        <nz-input-number
+          [(ngModel)]="data.price"
+          [nzMin]="0"
+          [nzStep]="1"
+          [ngModelOptions]="{ standalone: true }"
+        ></nz-input-number>
+      </td>
+      <td>
+        <nz-input-number
+          [(ngModel)]="data.in_num"
+          [nzMin]="1"
+          [nzStep]="1"
+          [ngModelOptions]="{ standalone: true }"
+        ></nz-input-number>
+      </td>
+      <td>
+        <nz-select class="select-sm" [(ngModel)]="data.in_type" nzAllowClear [ngModelOptions]="{ standalone: true }">
+          <nz-option [nzValue]="EStoreIn.Purchase" nzLabel="采购入库"></nz-option>
+          <nz-option [nzValue]="EStoreIn.Gift" nzLabel="赠送入库"></nz-option>
+          <nz-option [nzValue]="EStoreIn.Surplus" nzLabel="盘盈入库"></nz-option>
+        </nz-select>
+      </td>
+      <td>
+        <a (click)="deleteRow(index)">删除</a>
+      </td>
+    </tr>
+    <tr>
+      <td colSpan="5">
+        <button class="add-btn" nz-button nzType="dashed" (click)="addRow()">
+          <i nz-icon nzType="plus" nzTheme="outline"></i>新增行
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<div class="footer">
+  <button nz-button (click)="close()">取消</button>
+  <button nz-button nzType="primary" (click)="submit()" class="ml-md">提交</button>
+</div>

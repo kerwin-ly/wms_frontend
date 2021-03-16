@@ -1,0 +1,23 @@
+<div nz-col class="filter-drawer {{ filterClassName }}">
+  <div nz-row nzType="flex" class="filter-drawer-title" nzAlign="middle" nzJustify="space-between">
+    <div nz-col class="title-content">
+      <ng-container [ngSwitch]="true">
+        <ng-container *ngSwitchCase="isTemplateRef(filterTitle)" [ngTemplateOutlet]="filterTitle"></ng-container>
+        <ng-container *ngSwitchCase="isNonEmptyString(filterTitle)">
+          <div [innerHTML]="filterTitle"></div>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div nz-col class="filter-title-right">
+      <ng-container *ngIf="isTemplateRef(filterRight)" [ngTemplateOutlet]="filterRight"></ng-container>
+    </div>
+  </div>
+  <div class="filter-drawer-body" [class.show]="isOpen">
+    <ng-container [ngSwitch]="true">
+      <ng-container *ngSwitchCase="isTemplateRef(filterContent)" [ngTemplateOutlet]="filterContent"></ng-container>
+      <ng-container *ngSwitchCase="isNonEmptyString(filterContent)">
+        <div [innerHTML]="filterContent"></div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<shared-page-container>
+  <app-filter-drawer
+    [filterTitle]="'出库列表'"
+    [isOpen]="showFilter"
+    [filterContent]="filterContent"
+    [filterRight]="filterRight"
+  >
+  </app-filter-drawer>
+  <ng-template #filterRight>
+    <div nz-row nzType="flex" nzAlign="middle" nzJustify="end" nzGutter="32">
+      <div nz-col>
+        <button nz-button (click)="showFilter = !showFilter">
+          <i nz-icon nzType="filter" nzTheme="outline"></i> 筛选
+        </button>
+        <button nz-button nzType="primary" (click)="showStoreOut()" class="ml-sm">出库</button>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template g-template #filterContent>
+    <div class="table-header">
+      <nz-row>
+        <nz-form-item>
+          <nz-form-label class="table-header-label">关键词</nz-form-label>
+          <nz-form-control>
+            <nz-input-group>
+              <input
+                class="table-header-input"
+                nz-input
+                [(ngModel)]="query.word"
+                [ngModelOptions]="{ standalone: true }"
+                placeholder="请输入类目名"
+                (keyup.enter)="getList(true)"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label class="table-header-label">出库时间</nz-form-label>
+          <nz-form-control>
+            <nz-range-picker
+              [nzRanges]="defaultRanges"
+              [(ngModel)]="query.dateRange"
+              nzFormat="yyyy-MM-dd"
+              [ngModelOptions]="{ standalone: true }"
+            ></nz-range-picker>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-col>
+          <div class="button-group">
+            <button nz-button class="ml-sm" (click)="clear()">重置</button>
+            <button nz-button nzType="primary" class="ml-sm" (click)="getList(true)">查询</button>
+          </div>
+        </nz-col>
+      </nz-row>
+    </div>
+  </ng-template>
+  <nz-card>
+    <nz-table
+      nzShowSizeChanger
+      [nzData]="storeOutList"
+      [nzFrontPagination]="false"
+      [nzTotal]="page.total"
+      [(nzPageSize)]="page.pageSize"
+      [(nzPageIndex)]="page.pageIndex"
+      (nzPageIndexChange)="getList()"
+      (nzPageSizeChange)="getList(true)"
+    >
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>类目名</th>
+          <th>数量</th>
+          <th nzWidth="150px">出库单号</th>
+          <th>出库时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of storeOutList; let index = index">
+          <td>{{ (page.pageIndex - 1) * page.pageSize + index + 1 }}</td>
+          <td><app-table-tip [width]="150" [text]="data.goods_name"></app-table-tip></td>
+          <td>{{ data.out_num }}</td>
+          <td>{{ data.out_code }}</td>
+          <td>{{ data.out_date }}</td>
+          <td>
+            <a (click)="delete(data.goods_id)">删除</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-card>
+</shared-page-container>

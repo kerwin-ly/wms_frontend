@@ -38,6 +38,8 @@
         "app"
       ],
       "kebab-case"
-    ]
+    ],
+    "no-empty": false,
+    "no-empty-source": false
   }
 }

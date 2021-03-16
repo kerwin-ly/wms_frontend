@@ -24,6 +24,8 @@ import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 
 const ZORRO_MODULES = [
   NzInputModule,
@@ -49,7 +51,11 @@ const ZORRO_MODULES = [
   NzEmptyModule,
   NzCardModule,
   NzSkeletonModule,
-  NzIconModule
+  NzIconModule,
+  NzTableModule,
+  NzDrawerModule,
+  NzModalModule,
+  NzDividerModule
 ];
 
 @NgModule({

@@ -1,0 +1,52 @@
+<form nz-form class="ant-advanced-search-form">
+  <div nz-row [nzGutter]="24" *ngFor="let item of storeOutList">
+    <div nz-col [nzSpan]="8">
+      <nz-form-item>
+        <nz-form-label>类目名</nz-form-label>
+        <nz-form-control>
+          <nz-select
+            class="select-sm"
+            nzAllowClear
+            nzShowSearch
+            nzServerSearch
+            (nzOnSearch)="getGoodsList($event)"
+            [(ngModel)]="item.goods_id"
+            (ngModelChange)="selectGoods($event, item)"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <nz-option *ngFor="let goods of goodsList" [nzValue]="goods.id" [nzLabel]="goods.name"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-form-item>
+        <nz-form-label>出库数量</nz-form-label>
+        <nz-form-control>
+          <nz-input-number
+            [(ngModel)]="item.out_num"
+            [nzMin]="0"
+            [nzMax]="item.total"
+            [nzStep]="1"
+            [ngModelOptions]="{ standalone: true }"
+          ></nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="8">
+      <nz-form-item>
+        <nz-form-label>库存总数</nz-form-label>
+        <nz-form-control>
+          <span>{{ item.total }}</span>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row>
+    <button nz-button nzType="dashed" class="add-btn" class="addRow()" style="width: 100%">新增行</button>
+  </div>
+</form>
+<div class="footer">
+  <button nz-button (click)="close()">取消</button>
+  <button nz-button nzType="primary" (click)="submit()" class="ml-md">提交</button>
+</div>

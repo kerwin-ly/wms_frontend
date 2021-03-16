@@ -26,27 +26,6 @@ const routes: Routes = [
         }
       },
       {
-        path: 'list',
-        loadChildren: () => import('./list/list.module').then((m) => m.ListModule),
-        data: {
-          titleI18n: 'menu.list'
-        }
-      },
-      {
-        path: 'form',
-        loadChildren: () => import('./form/form.module').then((m) => m.FormModule),
-        data: {
-          titleI18n: 'menu.form'
-        }
-      },
-      {
-        path: 'setting',
-        loadChildren: () => import('./setting/setting.module').then((m) => m.SettingModule),
-        data: {
-          titleI18n: 'menu.setting'
-        }
-      },
-      {
         path: 'account',
         loadChildren: () => import('./account/account.module').then((m) => m.AccountModule),
         data: {
@@ -59,6 +38,14 @@ const routes: Routes = [
         data: {
           titleI18n: 'menu.exception'
         }
+      },
+      {
+        path: 'warehouse',
+        loadChildren: () => import('./warehouse/warehouse.module').then((m) => m.WarehouseModule)
+      },
+      {
+        path: 'goods',
+        loadChildren: () => import('./goods/goods.module').then((m) => m.GoodsModule)
       }
     ]
   },

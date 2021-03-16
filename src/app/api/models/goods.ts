@@ -1,8 +1,4 @@
 /* tslint:disable */
-export interface ResGetApiGoodsList {
-  items?: Array<{id?: number, name?: string}>;
-  total?: number;
-}
 export interface ApiGoodsPostParams {
 
   /**
@@ -10,6 +6,10 @@ export interface ApiGoodsPostParams {
    */
   name: string;
 }
-export interface GoodsIdPutParams {
+export interface ResGetApiGoodsList {
+  items: Array<{id: number, name: string}>;
+  total: number;
+}
+export interface ApiGoodsIdPutParams {
   name: string;
 }

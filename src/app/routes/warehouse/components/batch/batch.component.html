@@ -1,0 +1,31 @@
+<nz-table
+  nzShowSizeChanger
+  [nzData]="batchList"
+  [nzFrontPagination]="false"
+  [nzTotal]="page.total"
+  [(nzPageSize)]="page.pageSize"
+  [(nzPageIndex)]="page.pageIndex"
+  (nzPageIndexChange)="getBatchList()"
+  (nzPageSizeChange)="getBatchList(true)"
+>
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>入库单号</th>
+      <th>单价</th>
+      <th>入库数量</th>
+      <th>入库时间</th>
+      <th>入库类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of batchList; let index = index">
+      <td>{{ (page.pageIndex - 1) * page.pageSize + index + 1 }}</td>
+      <td>{{ data.in_code }}</td>
+      <td>{{ data.price }}</td>
+      <td>{{ data.in_num }}</td>
+      <td>{{ data.in_date }}</td>
+      <td>{{ data.in_date }}</td>
+    </tr>
+  </tbody>
+</nz-table>

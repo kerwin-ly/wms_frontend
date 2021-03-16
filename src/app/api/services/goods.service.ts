@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { ICommonResponse } from '../strict-http-response';
 import { ApiBaseService } from '../base-service';
 
-import { ResGetApiGoodsList, ApiGoodsPostParams, GoodsIdPutParams } from '../models/goods';
+import { ApiGoodsPostParams, ResGetApiGoodsList, ApiGoodsIdPutParams } from '../models/goods';
 @Injectable({
   providedIn: 'root',
 })
@@ -19,8 +19,17 @@ export class GoodsService extends ApiBaseService {
    * @param id
    * @return successful operation
    */
-  deleteGoods(id: string): Observable<ICommonResponse<null>> {
-    return this.http.delete<ICommonResponse<null>>(`goods`, { params: { id } })
+  deleteApiGoods(id: string): Observable<ICommonResponse<null>> {
+    return this.http.delete<ICommonResponse<null>>(`api/goods`, { params: { id } })
+  }
+
+  /**
+   * 新增商品
+   * @param params undefined
+   * @return successful operation
+   */
+  postApiGoods(params?: ApiGoodsPostParams): Observable<ICommonResponse<null>> {
+    return this.http.post<ICommonResponse<null>>(`api/goods`, params)
   }
 
   /**
@@ -40,17 +49,8 @@ export class GoodsService extends ApiBaseService {
   }
 
   /**
-   * 新增商品
-   * @param params undefined
-   * @return successful operation
-   */
-  postApiGoods(params?: ApiGoodsPostParams): Observable<ICommonResponse<null>> {
-    return this.http.post<ICommonResponse<null>>(`api/goods`, params)
-  }
-
-  /**
    * 编辑商品
-   * @param params The `GoodsService.PutGoodsIdParams` containing the following parameters:
+   * @param params The `GoodsService.PutApiGoodsIdParams` containing the following parameters:
    *
    * - `id`:
    *
@@ -58,8 +58,8 @@ export class GoodsService extends ApiBaseService {
    *
    * @return successful operation
    */
-  putGoodsId(params: GoodsService.PutGoodsIdParams): Observable<ICommonResponse<null>> {
-    return this.http.put<ICommonResponse<null>>(`goods/${params.id}`, params.params)
+  putApiGoodsId(params: GoodsService.PutApiGoodsIdParams): Observable<ICommonResponse<null>> {
+    return this.http.put<ICommonResponse<null>>(`api/goods/${params.id}`, params.params)
   }
 }
 
@@ -75,10 +75,10 @@ export module GoodsService {
   }
 
   /**
-   * Parameters for putGoodsId
+   * Parameters for putApiGoodsId
    */
-  export interface PutGoodsIdParams {
+  export interface PutApiGoodsIdParams {
     id: string;
-    params?: GoodsIdPutParams;
+    params?: ApiGoodsIdPutParams;
   }
 }

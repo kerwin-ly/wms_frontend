@@ -1,0 +1,48 @@
+:host {
+  // .filter-drawer {
+  //   margin-bottom: 12px;
+  // }
+  ::ng-deep {
+    .filter-drawer-title {
+      padding: 10px 24px;
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-bottom: none;
+
+      .title-content {
+        .suffix {
+          color: rgb(97, 97, 97);
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 36px;
+        }
+
+        height: 32px;
+        color: #000;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 32px;
+
+        i {
+          transform: scale(1.35);
+        }
+      }
+    }
+  }
+
+  .filter-drawer-body {
+    height: 0;
+    padding: 0 24px;
+    overflow: hidden;
+    background: #fff;
+    transition: all ease 0.2s;
+
+    &.show {
+      height: auto;
+      padding: 10px 24px;
+      border: 1px solid #e8e8e8;
+      border-top: none;
+      border-bottom: none;
+    }
+  }
+}

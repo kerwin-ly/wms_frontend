@@ -4,3 +4,4 @@ export const LANG = {
 };
 
 export const NEW = '_';
+export * from './drawer';
