@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://yapi.datagrand.com/mock/30",
+    "target": "http://localhost:10020",
     "secure": true,
     "changeOrigin": true
   }
