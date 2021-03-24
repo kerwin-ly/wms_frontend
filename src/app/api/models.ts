@@ -5,6 +5,6 @@ export { ResGetApiWarehouseOutList } from './models/warehouse';
 export { ResGetApiWarehouseList } from './models/warehouse';
 export { ResGetApiWarehouseBatch } from './models/warehouse';
 export { ResGetApiWarehouseHistory } from './models/warehouse';
-export { ApiGoodsPostParams } from './models/goods';
-export { ResGetApiGoodsList } from './models/goods';
 export { ApiGoodsIdPutParams } from './models/goods';
+export { ResGetApiGoodsList } from './models/goods';
+export { ApiGoodsPostParams } from './models/goods';

@@ -121,7 +121,7 @@ export class ListComponent implements OnInit {
   }
 
   deleteGoods(id: number): void {
-    this.goodsService.deleteApiGoods(id.toString()).subscribe(() => {
+    this.goodsService.deleteApiGoodsId(id.toString()).subscribe(() => {
       this.msg.success('删除成功');
       this.page.pageIndex = this.tableUtils.fixPageIndex(this.goodsList, this.page.pageIndex);
       this.getList();

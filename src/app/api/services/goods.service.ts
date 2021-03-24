@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { ICommonResponse } from '../strict-http-response';
 import { ApiBaseService } from '../base-service';
 
-import { ApiGoodsPostParams, ResGetApiGoodsList, ApiGoodsIdPutParams } from '../models/goods';
+import { ApiGoodsIdPutParams, ResGetApiGoodsList, ApiGoodsPostParams } from '../models/goods';
 @Injectable({
   providedIn: 'root',
 })
@@ -19,17 +19,22 @@ export class GoodsService extends ApiBaseService {
    * @param id
    * @return successful operation
    */
-  deleteApiGoods(id: string): Observable<ICommonResponse<null>> {
-    return this.http.delete<ICommonResponse<null>>(`api/goods`, { params: { id } })
+  deleteApiGoodsId(id: string): Observable<ICommonResponse<null>> {
+    return this.http.delete<ICommonResponse<null>>(`api/goods/${id}`)
   }
 
   /**
-   * 新增商品
-   * @param params undefined
+   * 编辑商品
+   * @param params The `GoodsService.PutApiGoodsIdParams` containing the following parameters:
+   *
+   * - `id`:
+   *
+   * - `params`:
+   *
    * @return successful operation
    */
-  postApiGoods(params?: ApiGoodsPostParams): Observable<ICommonResponse<null>> {
-    return this.http.post<ICommonResponse<null>>(`api/goods`, params)
+  putApiGoodsId(params: GoodsService.PutApiGoodsIdParams): Observable<ICommonResponse<null>> {
+    return this.http.put<ICommonResponse<null>>(`api/goods/${params.id}`, params.params)
   }
 
   /**
@@ -49,21 +54,24 @@ export class GoodsService extends ApiBaseService {
   }
 
   /**
-   * 编辑商品
-   * @param params The `GoodsService.PutApiGoodsIdParams` containing the following parameters:
-   *
-   * - `id`:
-   *
-   * - `params`:
-   *
+   * 新增商品
+   * @param params undefined
    * @return successful operation
    */
-  putApiGoodsId(params: GoodsService.PutApiGoodsIdParams): Observable<ICommonResponse<null>> {
-    return this.http.put<ICommonResponse<null>>(`api/goods/${params.id}`, params.params)
+  postApiGoods(params?: ApiGoodsPostParams): Observable<ICommonResponse<null>> {
+    return this.http.post<ICommonResponse<null>>(`api/goods`, params)
   }
 }
 
 export module GoodsService {
+
+  /**
+   * Parameters for putApiGoodsId
+   */
+  export interface PutApiGoodsIdParams {
+    id: string;
+    params?: ApiGoodsIdPutParams;
+  }
 
   /**
    * Parameters for getApiGoodsList
@@ -72,13 +80,5 @@ export module GoodsService {
     word: string;
     page_size: string;
     page_index: string;
-  }
-
-  /**
-   * Parameters for putApiGoodsId
-   */
-  export interface PutApiGoodsIdParams {
-    id: string;
-    params?: ApiGoodsIdPutParams;
   }
 }

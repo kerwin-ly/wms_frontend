@@ -585,7 +585,7 @@
 				}
 			}
 		},
-		"/api/goods": {
+		"/api/goods/:id": {
 			"delete": {
 				"tags": [
 					"goods"
@@ -598,9 +598,9 @@
 				"parameters": [
 					{
 						"name": "id",
-						"in": "query",
-						"required": true,
+						"in": "path",
 						"description": "",
+						"required": true,
 						"type": "string"
 					}
 				],
@@ -612,7 +612,10 @@
 							"type": "object",
 							"properties": {
 								"code": {
-									"type": "number"
+									"type": "number",
+									"mock": {
+										"mock": "200"
+									}
 								},
 								"msg": {
 									"type": "string"
@@ -630,21 +633,28 @@
 					}
 				}
 			},
-			"post": {
+			"put": {
 				"tags": [
 					"goods"
 				],
-				"summary": "新增商品",
+				"summary": "编辑商品",
 				"description": "",
 				"consumes": [
 					"application/json"
 				],
 				"parameters": [
 					{
+						"name": "id",
+						"in": "path",
+						"description": "",
+						"required": true,
+						"type": "string"
+					},
+					{
 						"name": "params",
 						"in": "body",
 						"schema": {
-							"$ref": "#/definitions/goods/ApiGoodsPostParams"
+							"$ref": "#/definitions/goods/ApiGoodsIdPutParams"
 						}
 					}
 				],
@@ -738,29 +748,22 @@
 				}
 			}
 		},
-		"/api/goods/:id": {
-			"put": {
+		"/api/goods": {
+			"post": {
 				"tags": [
 					"goods"
 				],
-				"summary": "编辑商品",
+				"summary": "新增商品",
 				"description": "",
 				"consumes": [
 					"application/json"
 				],
 				"parameters": [
 					{
-						"name": "id",
-						"in": "path",
-						"description": "",
-						"required": true,
-						"type": "string"
-					},
-					{
 						"name": "params",
 						"in": "body",
 						"schema": {
-							"$ref": "#/definitions/goods/ApiGoodsIdPutParams"
+							"$ref": "#/definitions/goods/ApiGoodsPostParams"
 						}
 					}
 				],
@@ -772,7 +775,10 @@
 							"type": "object",
 							"properties": {
 								"code": {
-									"type": "number"
+									"type": "number",
+									"mock": {
+										"mock": "200"
+									}
 								},
 								"msg": {
 									"type": "string"
@@ -1201,13 +1207,12 @@
 			}
 		},
 		"goods": {
-			"ApiGoodsPostParams": {
+			"ApiGoodsIdPutParams": {
 				"type": "object",
 				"title": "title",
 				"properties": {
 					"name": {
-						"type": "string",
-						"description": "商品名称"
+						"type": "string"
 					}
 				},
 				"required": [
@@ -1218,7 +1223,10 @@
 				"type": "object",
 				"properties": {
 					"total": {
-						"type": "number"
+						"type": "number",
+						"mock": {
+							"mock": "@natural"
+						}
 					},
 					"items": {
 						"type": "array",
@@ -1250,12 +1258,13 @@
 					"total"
 				]
 			},
-			"ApiGoodsIdPutParams": {
+			"ApiGoodsPostParams": {
 				"type": "object",
 				"title": "title",
 				"properties": {
 					"name": {
-						"type": "string"
+						"type": "string",
+						"description": "商品名称"
 					}
 				},
 				"required": [
