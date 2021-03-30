@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DRAWER_STYLE } from '@constants';
+import { OutBatchComponent } from '@routes/warehouse/components/out-batch/out-batch.component';
 import { StoreOutDetailComponent } from '@routes/warehouse/components/store-out-detail/store-out-detail.component';
 import { IStoreOutItem } from '@routes/warehouse/models';
 import { DateCleanType, DateTimeService } from '@utils/date-time.service';
@@ -100,6 +101,20 @@ export class StoreOutComponent implements OnInit {
     drawerRef.afterClose.subscribe((isRefresh: boolean) => {
       if (!isRefresh) return;
       this.getList(true);
+    });
+  }
+
+  showModal(goods_id: number, out_code: string): void {
+    this.drawerService.create({
+      nzTitle: '出库批次',
+      nzContent: OutBatchComponent,
+      nzFooter: null,
+      nzWidth: 720,
+      nzBodyStyle: DRAWER_STYLE,
+      nzContentParams: {
+        goods_id,
+        out_code
+      }
     });
   }
 }

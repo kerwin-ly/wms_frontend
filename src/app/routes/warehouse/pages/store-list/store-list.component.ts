@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BatchComponent } from '@routes/warehouse/components/batch/batch.component';
-import { IStoreInItem, IStoreItem } from '@routes/warehouse/models';
+import { IStoreInItem, IStoreItem, MOperation } from '@routes/warehouse/models';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
 import { WarehouseService } from 'src/app/api/services';
 
@@ -56,7 +56,7 @@ export class StoreListComponent implements OnInit {
         goodsId: id
       },
       nzFooter: null,
-      nzWidth: 720
+      nzWidth: 820
     });
   }
 }

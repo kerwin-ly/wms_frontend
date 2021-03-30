@@ -1,4 +1,5 @@
 export { ResGetApiWarehouseInList } from './models/warehouse';
+export { ResGetApiWarehouseOutBatch } from './models/warehouse';
 export { ApiWarehouseInPostParams } from './models/warehouse';
 export { ApiWarehouseOutPostParams } from './models/warehouse';
 export { ResGetApiWarehouseOutList } from './models/warehouse';

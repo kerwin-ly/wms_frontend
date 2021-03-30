@@ -11,6 +11,7 @@ import { StoreOutComponent } from './pages/store-out/store-out.component';
 import { StoreHistoryComponent } from './pages/store-history/store-history.component';
 import { StoreOutDetailComponent } from './components/store-out-detail/store-out-detail.component';
 import { StoreInDetailComponent } from './components/store-in-detail/store-in-detail.component';
+import { OutBatchComponent } from './components/out-batch/out-batch.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { StoreInDetailComponent } from './components/store-in-detail/store-in-de
     StoreOutComponent,
     StoreHistoryComponent,
     StoreInDetailComponent,
-    StoreOutDetailComponent
+    StoreOutDetailComponent,
+    OutBatchComponent
   ],
   imports: [CommonModule, BasicModule, BixiModule, WarehouseRoutingModule, SharedModule]
 })

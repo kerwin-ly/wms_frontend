@@ -100,6 +100,73 @@
 				}
 			}
 		},
+		"/api/warehouse/out/batch": {
+			"get": {
+				"tags": [
+					"warehouse"
+				],
+				"summary": "出库批次详情",
+				"description": "",
+				"parameters": [
+					{
+						"name": "goods_id",
+						"in": "query",
+						"required": true,
+						"description": "类目id",
+						"type": "string"
+					},
+					{
+						"name": "out_code",
+						"in": "query",
+						"required": true,
+						"description": "出库单号",
+						"type": "string"
+					},
+					{
+						"name": "page_index",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "page_size",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"$schema": "http://json-schema.org/draft-04/schema#",
+							"type": "object",
+							"properties": {
+								"code": {
+									"type": "number",
+									"mock": {
+										"mock": "200"
+									}
+								},
+								"msg": {
+									"type": "string"
+								},
+								"data": {
+									"$ref": "#/definitions/warehouse/ResGetApiWarehouseOutBatch"
+								}
+							},
+							"required": [
+								"data",
+								"code",
+								"msg"
+							]
+						}
+					}
+				}
+			}
+		},
 		"/api/warehouse/in/:id": {
 			"delete": {
 				"tags": [
@@ -479,6 +546,20 @@
 						"required": true,
 						"description": "类目id",
 						"type": "string"
+					},
+					{
+						"name": "page_index",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "page_size",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -552,6 +633,13 @@
 						"in": "query",
 						"required": true,
 						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "type",
+						"in": "query",
+						"required": true,
+						"description": "操作类型，0:采购入库，1:赠送入库，2:盘盈入库，3:出库",
 						"type": "string"
 					}
 				],
@@ -892,6 +980,58 @@
 					"items"
 				]
 			},
+			"ResGetApiWarehouseOutBatch": {
+				"type": "object",
+				"properties": {
+					"total": {
+						"type": "number",
+						"mock": {
+							"mock": "@natural"
+						},
+						"minimum": 10,
+						"maximum": 100
+					},
+					"items": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"price": {
+									"type": "number",
+									"description": "单价"
+								},
+								"out_num": {
+									"type": "number",
+									"description": "出库数量"
+								},
+								"in_type": {
+									"type": "number",
+									"description": "入库类型"
+								},
+								"in_code": {
+									"type": "string",
+									"description": "入库单号"
+								},
+								"in_date": {
+									"type": "string",
+									"description": "入库时间"
+								}
+							},
+							"required": [
+								"price",
+								"out_num",
+								"in_type",
+								"in_code",
+								"in_date"
+							]
+						}
+					}
+				},
+				"required": [
+					"total",
+					"items"
+				]
+			},
 			"ApiWarehouseInPostParams": {
 				"$schema": "http://json-schema.org/draft-04/schema#",
 				"type": "object",
@@ -1002,7 +1142,17 @@
 								},
 								"id": {
 									"type": "number",
-									"description": "记录id"
+									"description": "记录id",
+									"mock": {
+										"mock": "@id"
+									}
+								},
+								"out_cost": {
+									"type": "number",
+									"mock": {
+										"mock": "@natural"
+									},
+									"description": "出库成本"
 								}
 							},
 							"required": [
@@ -1011,7 +1161,8 @@
 								"out_num",
 								"out_code",
 								"out_date",
-								"id"
+								"id",
+								"out_cost"
 							]
 						}
 					}
@@ -1108,28 +1259,42 @@
 							"properties": {
 								"price": {
 									"type": "number",
-									"description": "单价"
+									"description": "单价",
+									"mock": {
+										"mock": "23"
+									}
 								},
-								"in_num": {
+								"exit_num": {
 									"type": "number",
-									"description": "入库数量"
+									"description": "库存剩余数量"
 								},
 								"in_type": {
 									"type": "number",
-									"description": "入库类型"
+									"description": "入库类型",
+									"enum": [
+										0,
+										1,
+										2
+									]
 								},
 								"in_code": {
 									"type": "string",
-									"description": "入库单号"
+									"description": "入库单号",
+									"mock": {
+										"mock": "in_20201212"
+									}
 								},
 								"in_date": {
 									"type": "string",
-									"description": "入库时间"
+									"description": "入库时间",
+									"mock": {
+										"mock": "@datetime"
+									}
 								}
 							},
 							"required": [
 								"price",
-								"in_num",
+								"exit_num",
 								"in_type",
 								"in_code",
 								"in_date"

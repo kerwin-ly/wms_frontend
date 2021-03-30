@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IGoods } from '@routes/goods/models';
-import { cloneDeep } from 'lodash-es';
+import { cloneDeep, reduce } from 'lodash-es';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { GoodsService, WarehouseService } from 'src/app/api/services';
@@ -65,10 +65,15 @@ export class StoreOutDetailComponent implements OnInit {
   }
 
   selectGoods(id: number, item: IStoreOut): void {
-    console.log(item);
-    this.wmsService.getApiWarehouseBatch(id.toString()).subscribe((res) => {
-      item.total = res.data.total;
-    });
+    this.wmsService
+      .getApiWarehouseBatch({
+        goods_id: id.toString(),
+        page_index: '1',
+        page_size: '10000'
+      })
+      .subscribe((res) => {
+        item.total = reduce(res.data.items, (sum, subItem) => (sum += subItem.exit_num), 0);
+      });
   }
 
   close(): void {

@@ -62,7 +62,8 @@ export class StoreHistoryComponent implements OnInit {
           : '',
         end_date: this.query.dateRange[1]
           ? this.dateTimeService.dateClean(this.query.dateRange[1], DateCleanType.Max)
-          : ''
+          : '',
+        type: this.query.operation
       })
       .subscribe((res) => {
         this.storeList = res.data.items;

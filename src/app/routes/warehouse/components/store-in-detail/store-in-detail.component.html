@@ -2,9 +2,9 @@
   <thead>
     <tr>
       <th>类目名</th>
+      <th>入库类型</th>
       <th>单价</th>
       <th>数量</th>
-      <th>入库类型</th>
       <th>操作</th>
     </tr>
   </thead>
@@ -24,11 +24,25 @@
         </nz-select>
       </td>
       <td>
+        <nz-select
+          class="select-sm"
+          (ngModelChange)="toggleType($event, data)"
+          [(ngModel)]="data.in_type"
+          nzAllowClear
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <nz-option [nzValue]="EStoreIn.Purchase" nzLabel="采购入库"></nz-option>
+          <nz-option [nzValue]="EStoreIn.Gift" nzLabel="赠送入库"></nz-option>
+          <nz-option [nzValue]="EStoreIn.Surplus" nzLabel="盘盈入库"></nz-option>
+        </nz-select>
+      </td>
+      <td>
         <nz-input-number
           [(ngModel)]="data.price"
           [nzMin]="0"
           [nzStep]="1"
           [ngModelOptions]="{ standalone: true }"
+          [nzDisabled]="data.in_type !== EStoreIn.Purchase"
         ></nz-input-number>
       </td>
       <td>
@@ -38,13 +52,6 @@
           [nzStep]="1"
           [ngModelOptions]="{ standalone: true }"
         ></nz-input-number>
-      </td>
-      <td>
-        <nz-select class="select-sm" [(ngModel)]="data.in_type" nzAllowClear [ngModelOptions]="{ standalone: true }">
-          <nz-option [nzValue]="EStoreIn.Purchase" nzLabel="采购入库"></nz-option>
-          <nz-option [nzValue]="EStoreIn.Gift" nzLabel="赠送入库"></nz-option>
-          <nz-option [nzValue]="EStoreIn.Surplus" nzLabel="盘盈入库"></nz-option>
-        </nz-select>
       </td>
       <td>
         <a (click)="deleteRow(index)">删除</a>

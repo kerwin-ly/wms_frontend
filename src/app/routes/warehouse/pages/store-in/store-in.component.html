@@ -84,7 +84,7 @@
           <th>入库类型</th>
           <th nzWidth="150px">入库单号</th>
           <th>入库时间</th>
-          <th>操作</th>
+          <!-- <th>操作</th> -->
         </tr>
       </thead>
       <tbody>
@@ -93,12 +93,12 @@
           <td><app-table-tip [width]="150" [text]="data.goods_name"></app-table-tip></td>
           <td>{{ data.price }}</td>
           <td>{{ data.in_num }}</td>
-          <td>{{ data.in_type }}</td>
+          <td>{{ inTypeMap[data.in_type] }}</td>
           <td>{{ data.in_code }}</td>
           <td>{{ data.in_date }}</td>
-          <td>
+          <!-- <td>
             <a (click)="delete(data.id)">删除</a>
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </nz-table>

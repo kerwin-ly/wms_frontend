@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { ICommonResponse } from '../strict-http-response';
 import { ApiBaseService } from '../base-service';
 
-import { ResGetApiWarehouseInList, ApiWarehouseInPostParams, ApiWarehouseOutPostParams, ResGetApiWarehouseOutList, ResGetApiWarehouseList, ResGetApiWarehouseBatch, ResGetApiWarehouseHistory } from '../models/warehouse';
+import { ResGetApiWarehouseInList, ResGetApiWarehouseOutBatch, ApiWarehouseInPostParams, ApiWarehouseOutPostParams, ResGetApiWarehouseOutList, ResGetApiWarehouseList, ResGetApiWarehouseBatch, ResGetApiWarehouseHistory } from '../models/warehouse';
 @Injectable({
   providedIn: 'root',
 })
@@ -34,6 +34,24 @@ export class WarehouseService extends ApiBaseService {
    */
   getApiWarehouseInList(params: WarehouseService.GetApiWarehouseInListParams): Observable<ICommonResponse<ResGetApiWarehouseInList>> {
     return this.http.get<ICommonResponse<ResGetApiWarehouseInList>>(`api/warehouse/in/list`, { params: this.getHttpParams(params) })
+  }
+
+  /**
+   * 出库批次详情
+   * @param params The `WarehouseService.GetApiWarehouseOutBatchParams` containing the following parameters:
+   *
+   * - `page_size`:
+   *
+   * - `page_index`:
+   *
+   * - `out_code`: 出库单号
+   *
+   * - `goods_id`: 类目id
+   *
+   * @return successful operation
+   */
+  getApiWarehouseOutBatch(params: WarehouseService.GetApiWarehouseOutBatchParams): Observable<ICommonResponse<ResGetApiWarehouseOutBatch>> {
+    return this.http.get<ICommonResponse<ResGetApiWarehouseOutBatch>>(`api/warehouse/out/batch`, { params: this.getHttpParams(params) })
   }
 
   /**
@@ -123,11 +141,18 @@ export class WarehouseService extends ApiBaseService {
 
   /**
    * 库存剩余批次详情
-   * @param goods_id 类目id
+   * @param params The `WarehouseService.GetApiWarehouseBatchParams` containing the following parameters:
+   *
+   * - `page_size`:
+   *
+   * - `page_index`:
+   *
+   * - `goods_id`: 类目id
+   *
    * @return successful operation
    */
-  getApiWarehouseBatch(goods_id: string): Observable<ICommonResponse<ResGetApiWarehouseBatch>> {
-    return this.http.get<ICommonResponse<ResGetApiWarehouseBatch>>(`api/warehouse/batch`, { params: { goods_id } })
+  getApiWarehouseBatch(params: WarehouseService.GetApiWarehouseBatchParams): Observable<ICommonResponse<ResGetApiWarehouseBatch>> {
+    return this.http.get<ICommonResponse<ResGetApiWarehouseBatch>>(`api/warehouse/batch`, { params: this.getHttpParams(params) })
   }
 
   /**
@@ -135,6 +160,8 @@ export class WarehouseService extends ApiBaseService {
    * @param params The `WarehouseService.GetApiWarehouseHistoryParams` containing the following parameters:
    *
    * - `word`: 类目名称
+   *
+   * - `type`: 操作类型，0:采购入库，1:赠送入库，2:盘盈入库，3:出库
    *
    * - `start_date`:
    *
@@ -190,6 +217,24 @@ export module WarehouseService {
   }
 
   /**
+   * Parameters for getApiWarehouseOutBatch
+   */
+  export interface GetApiWarehouseOutBatchParams {
+    page_size: string;
+    page_index: string;
+
+    /**
+     * 出库单号
+     */
+    out_code: string;
+
+    /**
+     * 类目id
+     */
+    goods_id: string;
+  }
+
+  /**
    * Parameters for deleteApiWarehouseOutId
    */
   export interface DeleteApiWarehouseOutIdParams {
@@ -234,6 +279,19 @@ export module WarehouseService {
   }
 
   /**
+   * Parameters for getApiWarehouseBatch
+   */
+  export interface GetApiWarehouseBatchParams {
+    page_size: string;
+    page_index: string;
+
+    /**
+     * 类目id
+     */
+    goods_id: string;
+  }
+
+  /**
    * Parameters for getApiWarehouseHistory
    */
   export interface GetApiWarehouseHistoryParams {
@@ -242,6 +300,11 @@ export module WarehouseService {
      * 类目名称
      */
     word: string;
+
+    /**
+     * 操作类型，0:采购入库，1:赠送入库，2:盘盈入库，3:出库
+     */
+    type: string;
     start_date: string;
     page_size: string;
     page_index: string;

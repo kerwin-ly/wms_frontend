@@ -72,7 +72,9 @@
           <th>数量</th>
           <th nzWidth="150px">出库单号</th>
           <th>出库时间</th>
-          <th>操作</th>
+          <th>出库成本</th>
+          <th>出库批次</th>
+          <!-- <th>操作</th> -->
         </tr>
       </thead>
       <tbody>
@@ -82,9 +84,11 @@
           <td>{{ data.out_num }}</td>
           <td>{{ data.out_code }}</td>
           <td>{{ data.out_date }}</td>
-          <td>
+          <td>{{ data.out_cost }}</td>
+          <td><a (click)="showModal(data.goods_id, data.out_code)">出库详情</a></td>
+          <!-- <td>
             <a (click)="delete(data.goods_id)">删除</a>
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </nz-table>

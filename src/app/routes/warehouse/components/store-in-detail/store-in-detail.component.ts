@@ -78,6 +78,13 @@ export class StoreInDetailComponent implements OnInit {
     });
   }
 
+  toggleType(type: EStoreIn, item: IStoreInItem): void {
+    console.log(type, item);
+    if (type !== EStoreIn.Purchase) {
+      item.price = 0;
+    }
+  }
+
   submit(): void {
     if (!this.isValid(this.storeInList)) {
       this.msg.warning('请完善表单内容');

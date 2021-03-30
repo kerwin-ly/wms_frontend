@@ -6,7 +6,8 @@ import {
   HttpHandler,
   HttpErrorResponse,
   HttpEvent,
-  HttpResponseBase
+  HttpResponseBase,
+  HttpParams
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { mergeMap, catchError } from 'rxjs/operators';
@@ -86,7 +87,15 @@ export class DefaultInterceptor implements HttpInterceptor {
         url = environment.SERVER_URL + url;
       }
     }
-    const newReq = req.clone({ url });
+    // 过滤val为null或者undefined的参数
+    let filterParams = new HttpParams();
+    for (const key of req.params.keys()) {
+      const val = req.params.get(key);
+      if (val !== undefined && val !== null && val !== '') {
+        filterParams = filterParams.append(key, val);
+      }
+    }
+    const newReq = req.clone({ url, params: filterParams });
     return next.handle(newReq).pipe(
       // tslint:disable-next-line: no-any
       mergeMap((event: any) => {

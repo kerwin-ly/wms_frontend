@@ -16,6 +16,18 @@ export interface IStoreInItem {
   goods_id: number;
   goods_name?: string;
   id?: number;
+  exit_num?: number;
+}
+
+export interface IStoreOutBatchItem {
+  out_num: number;
+  in_type: number;
+  price: number;
+  in_code?: string;
+  in_date?: string;
+  goods_id: number;
+  goods_name?: string;
+  id?: number;
 }
 
 export enum EStoreIn {
@@ -39,3 +51,10 @@ export enum EOperation {
   Surplus,
   Out
 }
+
+export const MOperation = {
+  0: '采购入库',
+  1: '赠送入库',
+  2: '盘盈入库',
+  3: '出库'
+};
