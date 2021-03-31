@@ -3,5 +3,10 @@
     "target": "http://localhost:10002",
     "secure": true,
     "changeOrigin": true
+  },
+  "/media": {
+    "target": "http://localhost:10002",
+    "secure": true,
+    "changeOrigin": true
   }
 }

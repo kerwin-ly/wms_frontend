@@ -1,11 +1,14 @@
 export { ResGetApiWarehouseInList } from './models/warehouse';
+export { ResGetApiWarehouseInDownload } from './models/warehouse';
 export { ResGetApiWarehouseOutBatch } from './models/warehouse';
 export { ApiWarehouseInPostParams } from './models/warehouse';
 export { ApiWarehouseOutPostParams } from './models/warehouse';
 export { ResGetApiWarehouseOutList } from './models/warehouse';
+export { ResGetApiWarehouseOutDownload } from './models/warehouse';
 export { ResGetApiWarehouseList } from './models/warehouse';
 export { ResGetApiWarehouseBatch } from './models/warehouse';
 export { ResGetApiWarehouseHistory } from './models/warehouse';
+export { ResGetApiWarehouseHistoryDownload } from './models/warehouse';
 export { ApiGoodsIdPutParams } from './models/goods';
 export { ResGetApiGoodsList } from './models/goods';
 export { ApiGoodsPostParams } from './models/goods';

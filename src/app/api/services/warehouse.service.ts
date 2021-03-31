@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { ICommonResponse } from '../strict-http-response';
 import { ApiBaseService } from '../base-service';
 
-import { ResGetApiWarehouseInList, ResGetApiWarehouseOutBatch, ApiWarehouseInPostParams, ApiWarehouseOutPostParams, ResGetApiWarehouseOutList, ResGetApiWarehouseList, ResGetApiWarehouseBatch, ResGetApiWarehouseHistory } from '../models/warehouse';
+import { ResGetApiWarehouseInList, ResGetApiWarehouseInDownload, ResGetApiWarehouseOutBatch, ApiWarehouseInPostParams, ApiWarehouseOutPostParams, ResGetApiWarehouseOutList, ResGetApiWarehouseOutDownload, ResGetApiWarehouseList, ResGetApiWarehouseBatch, ResGetApiWarehouseHistory, ResGetApiWarehouseHistoryDownload } from '../models/warehouse';
 @Injectable({
   providedIn: 'root',
 })
@@ -37,21 +37,25 @@ export class WarehouseService extends ApiBaseService {
   }
 
   /**
-   * 出库批次详情
-   * @param params The `WarehouseService.GetApiWarehouseOutBatchParams` containing the following parameters:
+   * 入库列表下载excel文件
+   * @param params The `WarehouseService.GetApiWarehouseInDownloadParams` containing the following parameters:
+   *
+   * - `word`:
+   *
+   * - `start_date`:
    *
    * - `page_size`:
    *
    * - `page_index`:
    *
-   * - `out_code`: 出库单号
+   * - `in_type`:
    *
-   * - `goods_id`: 类目id
+   * - `end_date`:
    *
    * @return successful operation
    */
-  getApiWarehouseOutBatch(params: WarehouseService.GetApiWarehouseOutBatchParams): Observable<ICommonResponse<ResGetApiWarehouseOutBatch>> {
-    return this.http.get<ICommonResponse<ResGetApiWarehouseOutBatch>>(`api/warehouse/out/batch`, { params: this.getHttpParams(params) })
+  getApiWarehouseInDownload(params: WarehouseService.GetApiWarehouseInDownloadParams): Observable<ICommonResponse<ResGetApiWarehouseInDownload>> {
+    return this.http.get<ICommonResponse<ResGetApiWarehouseInDownload>>(`api/warehouse/in/download`, { params: this.getHttpParams(params) })
   }
 
   /**
@@ -83,6 +87,24 @@ export class WarehouseService extends ApiBaseService {
    */
   deleteApiWarehouseOutId(params: WarehouseService.DeleteApiWarehouseOutIdParams): Observable<ICommonResponse<null>> {
     return this.http.delete<ICommonResponse<null>>(`api/warehouse/out/${params.id}`, { params: this.getHttpParams(params) })
+  }
+
+  /**
+   * 出库批次详情
+   * @param params The `WarehouseService.GetApiWarehouseOutBatchParams` containing the following parameters:
+   *
+   * - `page_size`:
+   *
+   * - `page_index`:
+   *
+   * - `out_code`: 出库单号
+   *
+   * - `goods_id`: 类目id
+   *
+   * @return successful operation
+   */
+  getApiWarehouseOutBatch(params: WarehouseService.GetApiWarehouseOutBatchParams): Observable<ICommonResponse<ResGetApiWarehouseOutBatch>> {
+    return this.http.get<ICommonResponse<ResGetApiWarehouseOutBatch>>(`api/warehouse/out/batch`, { params: this.getHttpParams(params) })
   }
 
   /**
@@ -121,6 +143,26 @@ export class WarehouseService extends ApiBaseService {
    */
   getApiWarehouseOutList(params: WarehouseService.GetApiWarehouseOutListParams): Observable<ICommonResponse<ResGetApiWarehouseOutList>> {
     return this.http.get<ICommonResponse<ResGetApiWarehouseOutList>>(`api/warehouse/out/list`, { params: this.getHttpParams(params) })
+  }
+
+  /**
+   * 出库列表下载excel文件
+   * @param params The `WarehouseService.GetApiWarehouseOutDownloadParams` containing the following parameters:
+   *
+   * - `word`:
+   *
+   * - `start_date`:
+   *
+   * - `page_size`:
+   *
+   * - `page_index`:
+   *
+   * - `end_date`:
+   *
+   * @return successful operation
+   */
+  getApiWarehouseOutDownload(params: WarehouseService.GetApiWarehouseOutDownloadParams): Observable<ICommonResponse<ResGetApiWarehouseOutDownload>> {
+    return this.http.get<ICommonResponse<ResGetApiWarehouseOutDownload>>(`api/warehouse/out/download`, { params: this.getHttpParams(params) })
   }
 
   /**
@@ -176,6 +218,28 @@ export class WarehouseService extends ApiBaseService {
   getApiWarehouseHistory(params: WarehouseService.GetApiWarehouseHistoryParams): Observable<ICommonResponse<ResGetApiWarehouseHistory>> {
     return this.http.get<ICommonResponse<ResGetApiWarehouseHistory>>(`api/warehouse/history`, { params: this.getHttpParams(params) })
   }
+
+  /**
+   * 明细列表下载excel文件
+   * @param params The `WarehouseService.GetApiWarehouseHistoryDownloadParams` containing the following parameters:
+   *
+   * - `word`:
+   *
+   * - `type`:
+   *
+   * - `start_date`:
+   *
+   * - `page_size`:
+   *
+   * - `page_index`:
+   *
+   * - `end_date`:
+   *
+   * @return successful operation
+   */
+  getApiWarehouseHistoryDownload(params: WarehouseService.GetApiWarehouseHistoryDownloadParams): Observable<ICommonResponse<ResGetApiWarehouseHistoryDownload>> {
+    return this.http.get<ICommonResponse<ResGetApiWarehouseHistoryDownload>>(`api/warehouse/history/download`, { params: this.getHttpParams(params) })
+  }
 }
 
 export module WarehouseService {
@@ -217,21 +281,15 @@ export module WarehouseService {
   }
 
   /**
-   * Parameters for getApiWarehouseOutBatch
+   * Parameters for getApiWarehouseInDownload
    */
-  export interface GetApiWarehouseOutBatchParams {
+  export interface GetApiWarehouseInDownloadParams {
+    word: string;
+    start_date: string;
     page_size: string;
     page_index: string;
-
-    /**
-     * 出库单号
-     */
-    out_code: string;
-
-    /**
-     * 类目id
-     */
-    goods_id: string;
+    in_type: string;
+    end_date: string;
   }
 
   /**
@@ -251,6 +309,24 @@ export module WarehouseService {
   }
 
   /**
+   * Parameters for getApiWarehouseOutBatch
+   */
+  export interface GetApiWarehouseOutBatchParams {
+    page_size: string;
+    page_index: string;
+
+    /**
+     * 出库单号
+     */
+    out_code: string;
+
+    /**
+     * 类目id
+     */
+    goods_id: string;
+  }
+
+  /**
    * Parameters for getApiWarehouseOutList
    */
   export interface GetApiWarehouseOutListParams {
@@ -258,6 +334,17 @@ export module WarehouseService {
     /**
      * 类目名称
      */
+    word: string;
+    start_date: string;
+    page_size: string;
+    page_index: string;
+    end_date: string;
+  }
+
+  /**
+   * Parameters for getApiWarehouseOutDownload
+   */
+  export interface GetApiWarehouseOutDownloadParams {
     word: string;
     start_date: string;
     page_size: string;
@@ -304,6 +391,18 @@ export module WarehouseService {
     /**
      * 操作类型，0:采购入库，1:赠送入库，2:盘盈入库，3:出库
      */
+    type: string;
+    start_date: string;
+    page_size: string;
+    page_index: string;
+    end_date: string;
+  }
+
+  /**
+   * Parameters for getApiWarehouseHistoryDownload
+   */
+  export interface GetApiWarehouseHistoryDownloadParams {
+    word: string;
     type: string;
     start_date: string;
     page_size: string;

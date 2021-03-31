@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EOperation } from '@routes/warehouse/models';
+import { DownloadService } from '@utils';
 import { DateCleanType, DateTimeService } from '@utils/date-time.service';
 import { WarehouseService } from 'src/app/api/services';
 
@@ -42,7 +43,11 @@ export class StoreHistoryComponent implements OnInit {
     最近七天: [this.dateTimeService.getDay(-7), this.dateTimeService.getDay(0)]
   };
 
-  constructor(private wmsService: WarehouseService, private dateTimeService: DateTimeService) {}
+  constructor(
+    private wmsService: WarehouseService,
+    private dateTimeService: DateTimeService,
+    private downloadService: DownloadService
+  ) {}
 
   ngOnInit(): void {
     this.getList();
@@ -77,5 +82,24 @@ export class StoreHistoryComponent implements OnInit {
       dateRange: [],
       operation: null
     };
+  }
+
+  download(): void {
+    this.wmsService
+      .getApiWarehouseHistoryDownload({
+        page_index: this.page.pageIndex.toString(),
+        page_size: this.page.pageSize.toString(),
+        word: this.query.word,
+        start_date: this.query.dateRange[0]
+          ? this.dateTimeService.dateClean(this.query.dateRange[0], DateCleanType.Min)
+          : '',
+        end_date: this.query.dateRange[1]
+          ? this.dateTimeService.dateClean(this.query.dateRange[1], DateCleanType.Max)
+          : '',
+        type: this.query.operation
+      })
+      .subscribe((res) => {
+        this.downloadService.downloadFile(res.data.url, '明细表');
+      });
   }
 }

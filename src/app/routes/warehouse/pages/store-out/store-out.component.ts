@@ -3,6 +3,7 @@ import { DRAWER_STYLE } from '@constants';
 import { OutBatchComponent } from '@routes/warehouse/components/out-batch/out-batch.component';
 import { StoreOutDetailComponent } from '@routes/warehouse/components/store-out-detail/store-out-detail.component';
 import { IStoreOutItem } from '@routes/warehouse/models';
+import { DownloadService } from '@utils';
 import { DateCleanType, DateTimeService } from '@utils/date-time.service';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -37,7 +38,8 @@ export class StoreOutComponent implements OnInit {
     private dateTimeService: DateTimeService,
     private modalService: NzModalService,
     private msg: NzMessageService,
-    private drawerService: NzDrawerService
+    private drawerService: NzDrawerService,
+    private downloadService: DownloadService
   ) {}
 
   ngOnInit(): void {
@@ -70,6 +72,24 @@ export class StoreOutComponent implements OnInit {
       .subscribe((res) => {
         this.storeOutList = res.data.items;
         this.page.total = res.data.total;
+      });
+  }
+
+  download(): void {
+    this.wmsService
+      .getApiWarehouseOutDownload({
+        word: this.query.word,
+        page_index: this.page.pageIndex.toString(),
+        page_size: this.page.pageSize.toString(),
+        start_date: this.query.dateRange[0]
+          ? this.dateTimeService.dateClean(this.query.dateRange[0], DateCleanType.Min)
+          : '',
+        end_date: this.query.dateRange[1]
+          ? this.dateTimeService.dateClean(this.query.dateRange[1], DateCleanType.Max)
+          : ''
+      })
+      .subscribe((res) => {
+        this.downloadService.downloadFile(res.data.url, '出库列表');
       });
   }
 

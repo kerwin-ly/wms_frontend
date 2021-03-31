@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DRAWER_STYLE } from '@constants';
 import { StoreInDetailComponent } from '@routes/warehouse/components/store-in-detail/store-in-detail.component';
 import { EStoreIn, IStoreInItem } from '@routes/warehouse/models';
+import { DownloadService } from '@utils';
 import { DateCleanType, DateTimeService } from '@utils/date-time.service';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -43,7 +44,8 @@ export class StoreInComponent implements OnInit {
     private dateTimeService: DateTimeService,
     private modalService: NzModalService,
     private msg: NzMessageService,
-    private drawerService: NzDrawerService
+    private drawerService: NzDrawerService,
+    private downloadService: DownloadService
   ) {}
 
   ngOnInit(): void {
@@ -110,5 +112,24 @@ export class StoreInComponent implements OnInit {
       dateRange: [],
       inType: null
     };
+  }
+
+  download(): void {
+    this.wmsService
+      .getApiWarehouseInDownload({
+        page_index: this.page.pageIndex.toString(),
+        page_size: this.page.pageSize.toString(),
+        start_date: this.query.dateRange[0]
+          ? this.dateTimeService.dateClean(this.query.dateRange[0], DateCleanType.Min)
+          : '',
+        end_date: this.query.dateRange[1]
+          ? this.dateTimeService.dateClean(this.query.dateRange[1], DateCleanType.Max)
+          : '',
+        word: this.query.word,
+        in_type: this.query.inType
+      })
+      .subscribe((res) => {
+        this.downloadService.downloadFile(res.data.url, '入库列表');
+      });
   }
 }

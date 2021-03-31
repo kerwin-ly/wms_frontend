@@ -13,6 +13,7 @@
           <i nz-icon nzType="filter" nzTheme="outline"></i> 筛选
         </button>
         <button nz-button nzType="primary" (click)="showStoreOut()" class="ml-sm">出库</button>
+        <button nz-button nzType="primary" (click)="download()" class="ml-sm">下载excel</button>
       </div>
     </div>
   </ng-template>
@@ -69,7 +70,7 @@
         <tr>
           <th>序号</th>
           <th>类目名</th>
-          <th>数量</th>
+          <th>出库数量</th>
           <th nzWidth="150px">出库单号</th>
           <th>出库时间</th>
           <th>出库成本</th>

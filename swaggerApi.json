@@ -100,28 +100,17 @@
 				}
 			}
 		},
-		"/api/warehouse/out/batch": {
+		"/api/warehouse/in/download": {
 			"get": {
 				"tags": [
 					"warehouse"
 				],
-				"summary": "出库批次详情",
+				"summary": "入库列表下载excel文件",
 				"description": "",
+				"consumes": [
+					"application/json"
+				],
 				"parameters": [
-					{
-						"name": "goods_id",
-						"in": "query",
-						"required": true,
-						"description": "类目id",
-						"type": "string"
-					},
-					{
-						"name": "out_code",
-						"in": "query",
-						"required": true,
-						"description": "出库单号",
-						"type": "string"
-					},
 					{
 						"name": "page_index",
 						"in": "query",
@@ -131,6 +120,34 @@
 					},
 					{
 						"name": "page_size",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "word",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "start_date",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "end_date",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "in_type",
 						"in": "query",
 						"required": true,
 						"description": "",
@@ -145,22 +162,19 @@
 							"type": "object",
 							"properties": {
 								"code": {
-									"type": "number",
-									"mock": {
-										"mock": "200"
-									}
+									"type": "number"
 								},
 								"msg": {
 									"type": "string"
 								},
 								"data": {
-									"$ref": "#/definitions/warehouse/ResGetApiWarehouseOutBatch"
+									"$ref": "#/definitions/warehouse/ResGetApiWarehouseInDownload"
 								}
 							},
 							"required": [
-								"data",
 								"code",
-								"msg"
+								"msg",
+								"data"
 							]
 						}
 					}
@@ -294,6 +308,73 @@
 								"code",
 								"msg",
 								"data"
+							]
+						}
+					}
+				}
+			}
+		},
+		"/api/warehouse/out/batch": {
+			"get": {
+				"tags": [
+					"warehouse"
+				],
+				"summary": "出库批次详情",
+				"description": "",
+				"parameters": [
+					{
+						"name": "goods_id",
+						"in": "query",
+						"required": true,
+						"description": "类目id",
+						"type": "string"
+					},
+					{
+						"name": "out_code",
+						"in": "query",
+						"required": true,
+						"description": "出库单号",
+						"type": "string"
+					},
+					{
+						"name": "page_index",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "page_size",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"$schema": "http://json-schema.org/draft-04/schema#",
+							"type": "object",
+							"properties": {
+								"code": {
+									"type": "number",
+									"mock": {
+										"mock": "200"
+									}
+								},
+								"msg": {
+									"type": "string"
+								},
+								"data": {
+									"$ref": "#/definitions/warehouse/ResGetApiWarehouseOutBatch"
+								}
+							},
+							"required": [
+								"data",
+								"code",
+								"msg"
 							]
 						}
 					}
@@ -460,6 +541,80 @@
 								},
 								"data": {
 									"$ref": "#/definitions/warehouse/ResGetApiWarehouseOutList"
+								}
+							},
+							"required": [
+								"code",
+								"msg",
+								"data"
+							]
+						}
+					}
+				}
+			}
+		},
+		"/api/warehouse/out/download": {
+			"get": {
+				"tags": [
+					"warehouse"
+				],
+				"summary": "出库列表下载excel文件",
+				"description": "",
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "page_index",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "page_size",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "word",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "start_date",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "end_date",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"$schema": "http://json-schema.org/draft-04/schema#",
+							"type": "object",
+							"properties": {
+								"code": {
+									"type": "number"
+								},
+								"msg": {
+									"type": "string"
+								},
+								"data": {
+									"$ref": "#/definitions/warehouse/ResGetApiWarehouseOutDownload"
 								}
 							},
 							"required": [
@@ -661,6 +816,87 @@
 								},
 								"data": {
 									"$ref": "#/definitions/warehouse/ResGetApiWarehouseHistory"
+								}
+							},
+							"required": [
+								"code",
+								"msg",
+								"data"
+							]
+						}
+					}
+				}
+			}
+		},
+		"/api/warehouse/history/download": {
+			"get": {
+				"tags": [
+					"warehouse"
+				],
+				"summary": "明细列表下载excel文件",
+				"description": "",
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "page_index",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "page_size",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "word",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "start_date",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "end_date",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "type",
+						"in": "query",
+						"required": true,
+						"description": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"$schema": "http://json-schema.org/draft-04/schema#",
+							"type": "object",
+							"properties": {
+								"code": {
+									"type": "number"
+								},
+								"msg": {
+									"type": "string"
+								},
+								"data": {
+									"$ref": "#/definitions/warehouse/ResGetApiWarehouseHistoryDownload"
 								}
 							},
 							"required": [
@@ -980,6 +1216,17 @@
 					"items"
 				]
 			},
+			"ResGetApiWarehouseInDownload": {
+				"type": "object",
+				"properties": {
+					"url": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"url"
+				]
+			},
 			"ResGetApiWarehouseOutBatch": {
 				"type": "object",
 				"properties": {
@@ -1170,6 +1417,17 @@
 				"required": [
 					"total",
 					"items"
+				]
+			},
+			"ResGetApiWarehouseOutDownload": {
+				"type": "object",
+				"properties": {
+					"url": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"url"
 				]
 			},
 			"ResGetApiWarehouseList": {
@@ -1368,6 +1626,17 @@
 				"required": [
 					"total",
 					"items"
+				]
+			},
+			"ResGetApiWarehouseHistoryDownload": {
+				"type": "object",
+				"properties": {
+					"url": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"url"
 				]
 			}
 		},
