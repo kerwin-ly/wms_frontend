@@ -74,7 +74,7 @@
       ]
     },
     {
-      "titleI18n": "类目管理",
+      "titleI18n": "商品管理",
       "icon": "area-chart",
       "link": "/goods/list"
     }

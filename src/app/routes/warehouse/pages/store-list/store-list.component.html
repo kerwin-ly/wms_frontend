@@ -27,7 +27,7 @@
                 nz-input
                 [(ngModel)]="query.word"
                 [ngModelOptions]="{ standalone: true }"
-                placeholder="请输入类目名"
+                placeholder="请输入商品名"
                 (keyup.enter)="getList(true)"
               />
             </nz-input-group>
@@ -56,7 +56,7 @@
       <thead>
         <tr>
           <th>序号</th>
-          <th>类目名</th>
+          <th>商品名</th>
           <th>库存数量</th>
           <th>总成本</th>
           <th>批次</th>

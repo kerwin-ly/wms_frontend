@@ -10,5 +10,8 @@ export { ResGetApiWarehouseBatch } from './models/warehouse';
 export { ResGetApiWarehouseHistory } from './models/warehouse';
 export { ResGetApiWarehouseHistoryDownload } from './models/warehouse';
 export { ApiGoodsIdPutParams } from './models/goods';
+export { ApiGoodsTypeIdPutParams } from './models/goods';
 export { ResGetApiGoodsList } from './models/goods';
+export { ResGetApiGoodsTypeList } from './models/goods';
 export { ApiGoodsPostParams } from './models/goods';
+export { ApiGoodsTypePostParams } from './models/goods';

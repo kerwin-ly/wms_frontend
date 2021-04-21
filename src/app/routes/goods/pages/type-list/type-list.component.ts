@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { GoodsDetailComponent } from '@routes/goods/components/goods-detail/goods-detail.component';
-import { IGoods } from '@routes/goods/models';
+import { GoodsTypeDetailComponent } from '@routes/goods/components/goods-type-detail/goods-type-detail.component';
+import { IGoodsType } from '@routes/goods/models';
 import { TableUtils } from '@utils';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { GoodsService } from 'src/app/api/services';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.less']
+  selector: 'app-type-list',
+  templateUrl: './type-list.component.html',
+  styleUrls: ['./type-list.component.less']
 })
-export class ListComponent implements OnInit {
+export class TypeListComponent implements OnInit {
   query = {
     word: ''
   };
@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
     pageSize: 10,
     total: 1
   };
-  goodsList: IGoods[] = [];
+  typeList: IGoodsType[] = [];
 
   constructor(
     private goodsService: GoodsService,
@@ -39,25 +39,25 @@ export class ListComponent implements OnInit {
       this.page.pageIndex = 1;
     }
     this.goodsService
-      .getApiGoodsList({
+      .getApiGoodsTypeList({
         page_index: this.page.pageIndex.toString(),
         page_size: this.page.pageSize.toString(),
         word: this.query.word
       })
       .subscribe((res) => {
-        this.goodsList = res.data.items;
+        this.typeList = res.data.items;
         this.page.total = res.data.total;
       });
   }
 
-  update(goods: IGoods): void {
+  update(goods: IGoodsType): void {
     const modalRef = this.modalService.create({
-      nzTitle: '编辑类目',
-      nzContent: GoodsDetailComponent,
+      nzTitle: '编辑分类',
+      nzContent: GoodsTypeDetailComponent,
       nzFooter: null,
       nzComponentParams: {
         goods,
-        modalSuccess: (data: IGoods) => {
+        modalSuccess: (data: IGoodsType) => {
           this.updateGoods(data, modalRef);
         },
         modalCancel: () => {
@@ -69,11 +69,11 @@ export class ListComponent implements OnInit {
 
   add(): void {
     const modalRef = this.modalService.create({
-      nzTitle: '新增类目',
-      nzContent: GoodsDetailComponent,
+      nzTitle: '新增分类',
+      nzContent: GoodsTypeDetailComponent,
       nzFooter: null,
       nzComponentParams: {
-        modalSuccess: (data: IGoods) => {
+        modalSuccess: (data: IGoodsType) => {
           this.addGoods(data, modalRef);
         },
         modalCancel: () => {
@@ -83,10 +83,11 @@ export class ListComponent implements OnInit {
     });
   }
 
-  addGoods(data: IGoods, ref: NzModalRef): void {
+  addGoods(data: IGoodsType, ref: NzModalRef): void {
     this.goodsService
       .postApiGoods({
-        name: data.name
+        name: data.name,
+        type_id: 0
       })
       .subscribe(() => {
         this.msg.success('新增成功');
@@ -95,12 +96,13 @@ export class ListComponent implements OnInit {
       });
   }
 
-  updateGoods(data: IGoods, ref: NzModalRef) {
+  updateGoods(data: IGoodsType, ref: NzModalRef) {
     this.goodsService
       .putApiGoodsId({
         id: data.id.toString(),
         params: {
-          name: data.name
+          name: data.name,
+          type_id: 0
         }
       })
       .subscribe(() => {
@@ -121,9 +123,9 @@ export class ListComponent implements OnInit {
   }
 
   deleteGoods(id: number): void {
-    this.goodsService.deleteApiGoodsId(id.toString()).subscribe(() => {
+    this.goodsService.deleteApiGoodsTypeId(id.toString()).subscribe(() => {
       this.msg.success('删除成功');
-      this.page.pageIndex = this.tableUtils.fixPageIndex(this.goodsList, this.page.pageIndex);
+      this.page.pageIndex = this.tableUtils.fixPageIndex(this.typeList, this.page.pageIndex);
       this.getList();
     });
   }

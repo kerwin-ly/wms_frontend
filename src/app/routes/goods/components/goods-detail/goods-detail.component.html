@@ -1,8 +1,16 @@
 <form nz-form [formGroup]="validateForm">
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">类目</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入类目名!">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">商品名</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入商品名!">
       <input nz-input formControlName="name" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>分类名称</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入分类名称!">
+      <nz-select formControlName="type_id" class="select-item" nzAllowClear nzShowSearch>
+        <nz-option *ngFor="let item of typeList" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
+      </nz-select>
     </nz-form-control>
   </nz-form-item>
 </form>
