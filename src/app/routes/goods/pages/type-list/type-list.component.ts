@@ -85,9 +85,8 @@ export class TypeListComponent implements OnInit {
 
   addGoods(data: IGoodsType, ref: NzModalRef): void {
     this.goodsService
-      .postApiGoods({
-        name: data.name,
-        type_id: 0
+      .postApiGoodsType({
+        name: data.name
       })
       .subscribe(() => {
         this.msg.success('新增成功');
@@ -98,11 +97,10 @@ export class TypeListComponent implements OnInit {
 
   updateGoods(data: IGoodsType, ref: NzModalRef) {
     this.goodsService
-      .putApiGoodsId({
+      .putApiGoodsTypeId({
         id: data.id.toString(),
         params: {
-          name: data.name,
-          type_id: 0
+          name: data.name
         }
       })
       .subscribe(() => {

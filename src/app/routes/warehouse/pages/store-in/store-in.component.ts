@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DRAWER_STYLE } from '@constants';
+import { IGoodsType } from '@routes/goods/models';
 import { StoreInDetailComponent } from '@routes/warehouse/components/store-in-detail/store-in-detail.component';
 import { EStoreIn, IStoreInItem } from '@routes/warehouse/models';
 import { DownloadService } from '@utils';
@@ -7,7 +8,7 @@ import { DateCleanType, DateTimeService } from '@utils/date-time.service';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { WarehouseService } from 'src/app/api/services';
+import { GoodsService, WarehouseService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-store-in',
@@ -18,7 +19,8 @@ export class StoreInComponent implements OnInit {
   query = {
     word: '',
     dateRange: [],
-    inType: null
+    inType: null,
+    type_id: null
   };
   defaultRanges = {
     今天: [this.dateTimeService.getDay(0), this.dateTimeService.getDay(0)],
@@ -38,6 +40,7 @@ export class StoreInComponent implements OnInit {
     2: '盘盈入库'
   };
   EStoreIn = EStoreIn;
+  typeList: IGoodsType[] = [];
 
   constructor(
     private wmsService: WarehouseService,
@@ -45,11 +48,25 @@ export class StoreInComponent implements OnInit {
     private modalService: NzModalService,
     private msg: NzMessageService,
     private drawerService: NzDrawerService,
-    private downloadService: DownloadService
+    private downloadService: DownloadService,
+    private goodsService: GoodsService
   ) {}
 
   ngOnInit(): void {
     this.getList();
+    this.getTypeList();
+  }
+
+  getTypeList(): void {
+    this.goodsService
+      .getApiGoodsList({
+        page_index: '1',
+        page_size: '1000',
+        word: ''
+      })
+      .subscribe((res) => {
+        this.typeList = res.data.items;
+      });
   }
 
   showStoreIn(): void {
@@ -81,7 +98,8 @@ export class StoreInComponent implements OnInit {
           ? this.dateTimeService.dateClean(this.query.dateRange[1], DateCleanType.Max)
           : '',
         word: this.query.word,
-        in_type: this.query.inType
+        in_type: this.query.inType,
+        type_id: this.query.type_id
       })
       .subscribe((res) => {
         this.storeList = res.data.items;
@@ -110,7 +128,8 @@ export class StoreInComponent implements OnInit {
     this.query = {
       word: '',
       dateRange: [],
-      inType: null
+      inType: null,
+      type_id: null
     };
   }
 
@@ -126,7 +145,8 @@ export class StoreInComponent implements OnInit {
           ? this.dateTimeService.dateClean(this.query.dateRange[1], DateCleanType.Max)
           : '',
         word: this.query.word,
-        in_type: this.query.inType
+        in_type: this.query.inType,
+        type_id: this.query.type_id
       })
       .subscribe((res) => {
         this.downloadService.downloadFile(res.data.url, '入库列表');

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { IGoodsType } from '@routes/goods/models';
 import { EOperation } from '@routes/warehouse/models';
 import { DownloadService } from '@utils';
 import { DateCleanType, DateTimeService } from '@utils/date-time.service';
-import { WarehouseService } from 'src/app/api/services';
+import { GoodsService, WarehouseService } from 'src/app/api/services';
 
 interface IStoreHistory {
   goods_id: number;
@@ -23,7 +24,8 @@ export class StoreHistoryComponent implements OnInit {
   query = {
     word: '',
     dateRange: [],
-    operation: null
+    operation: null,
+    type_id: null
   };
   storeList: IStoreHistory[] = [];
   page = {
@@ -42,15 +44,30 @@ export class StoreHistoryComponent implements OnInit {
     昨天: [this.dateTimeService.getDay(-1), this.dateTimeService.getDay(-1)],
     最近七天: [this.dateTimeService.getDay(-7), this.dateTimeService.getDay(0)]
   };
+  typeList: IGoodsType[] = [];
 
   constructor(
     private wmsService: WarehouseService,
     private dateTimeService: DateTimeService,
-    private downloadService: DownloadService
+    private downloadService: DownloadService,
+    private goodsService: GoodsService
   ) {}
 
   ngOnInit(): void {
     this.getList();
+    this.getTypeList();
+  }
+
+  getTypeList(): void {
+    this.goodsService
+      .getApiGoodsList({
+        page_index: '1',
+        page_size: '1000',
+        word: ''
+      })
+      .subscribe((res) => {
+        this.typeList = res.data.items;
+      });
   }
 
   getList(isReset = false): void {
@@ -68,7 +85,8 @@ export class StoreHistoryComponent implements OnInit {
         end_date: this.query.dateRange[1]
           ? this.dateTimeService.dateClean(this.query.dateRange[1], DateCleanType.Max)
           : '',
-        type: this.query.operation
+        type: this.query.operation,
+        type_id: this.query.type_id
       })
       .subscribe((res) => {
         this.storeList = res.data.items;
@@ -80,7 +98,8 @@ export class StoreHistoryComponent implements OnInit {
     this.query = {
       word: '',
       dateRange: [],
-      operation: null
+      operation: null,
+      type_id: null
     };
   }
 
@@ -96,7 +115,8 @@ export class StoreHistoryComponent implements OnInit {
         end_date: this.query.dateRange[1]
           ? this.dateTimeService.dateClean(this.query.dateRange[1], DateCleanType.Max)
           : '',
-        type: this.query.operation
+        type: this.query.operation,
+        type_id: this.query.type_id
       })
       .subscribe((res) => {
         this.downloadService.downloadFile(res.data.url, '明细表');

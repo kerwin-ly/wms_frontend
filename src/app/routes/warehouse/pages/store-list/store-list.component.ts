@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { IGoodsType } from '@routes/goods/models';
 import { BatchComponent } from '@routes/warehouse/components/batch/batch.component';
 import { IStoreInItem, IStoreItem, MOperation } from '@routes/warehouse/models';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
-import { WarehouseService } from 'src/app/api/services';
+import { GoodsService, WarehouseService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-store-list',
@@ -16,20 +17,42 @@ export class StoreListComponent implements OnInit {
     total: 1
   };
   query = {
-    word: ''
+    word: '',
+    type_id: null
   };
   storeList: IStoreItem[] = [];
   showFilter = false;
   batchList: IStoreInItem[] = [];
+  typeList: IGoodsType[] = [];
 
-  constructor(private wmsService: WarehouseService, private drawerService: NzDrawerService) {}
+  constructor(
+    private wmsService: WarehouseService,
+    private drawerService: NzDrawerService,
+    private goodsService: GoodsService
+  ) {}
 
   ngOnInit(): void {
     this.getList();
+    this.getTypeList();
+  }
+
+  getTypeList(): void {
+    this.goodsService
+      .getApiGoodsList({
+        page_index: '1',
+        page_size: '1000',
+        word: ''
+      })
+      .subscribe((res) => {
+        this.typeList = res.data.items;
+      });
   }
 
   clear(): void {
-    this.query.word = '';
+    this.query = {
+      word: '',
+      type_id: null
+    };
   }
 
   getList(isReset = false): void {
@@ -40,7 +63,8 @@ export class StoreListComponent implements OnInit {
       .getApiWarehouseList({
         page_index: this.page.pageIndex.toString(),
         page_size: this.page.pageSize.toString(),
-        word: this.query.word
+        word: this.query.word,
+        type_id: this.query.type_id
       })
       .subscribe((res) => {
         this.storeList = res.data.items;

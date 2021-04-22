@@ -68,6 +68,13 @@
 						"required": true,
 						"description": "入库类型。0:采购入库，1:盘盈入库，2:赠送入库",
 						"type": "string"
+					},
+					{
+						"name": "type_id",
+						"in": "query",
+						"required": true,
+						"description": "商品分类",
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -150,6 +157,13 @@
 						"name": "in_type",
 						"in": "query",
 						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "type_id",
+						"in": "query",
+						"required": false,
 						"description": "",
 						"type": "string"
 					}
@@ -266,7 +280,7 @@
 						"name": "word",
 						"in": "query",
 						"required": true,
-						"description": "商品名称",
+						"description": "类目名称",
 						"type": "string"
 					},
 					{
@@ -326,7 +340,7 @@
 						"name": "goods_id",
 						"in": "query",
 						"required": true,
-						"description": "商品id",
+						"description": "类目id",
 						"type": "string"
 					},
 					{
@@ -505,7 +519,7 @@
 						"name": "word",
 						"in": "query",
 						"required": true,
-						"description": "商品名称",
+						"description": "类目名称",
 						"type": "string"
 					},
 					{
@@ -520,6 +534,13 @@
 						"in": "query",
 						"required": true,
 						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "type_id",
+						"in": "query",
+						"required": true,
+						"description": "分类id",
 						"type": "string"
 					}
 				],
@@ -598,6 +619,13 @@
 						"required": true,
 						"description": "",
 						"type": "string"
+					},
+					{
+						"name": "type_id",
+						"in": "query",
+						"required": false,
+						"description": "商品分类id",
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -653,7 +681,14 @@
 						"name": "word",
 						"in": "query",
 						"required": true,
-						"description": "商品名",
+						"description": "类目名",
+						"type": "string"
+					},
+					{
+						"name": "type_id",
+						"in": "query",
+						"required": true,
+						"description": "分类id",
 						"type": "string"
 					}
 				],
@@ -699,7 +734,7 @@
 						"name": "goods_id",
 						"in": "query",
 						"required": true,
-						"description": "商品id",
+						"description": "类目id",
 						"type": "string"
 					},
 					{
@@ -773,7 +808,7 @@
 						"name": "word",
 						"in": "query",
 						"required": true,
-						"description": "商品名称",
+						"description": "类目名称",
 						"type": "string"
 					},
 					{
@@ -795,6 +830,13 @@
 						"in": "query",
 						"required": true,
 						"description": "操作类型，0:采购入库，1:赠送入库，2:盘盈入库，3:出库",
+						"type": "string"
+					},
+					{
+						"name": "type_id",
+						"in": "query",
+						"required": true,
+						"description": "分类id",
 						"type": "string"
 					}
 				],
@@ -878,6 +920,13 @@
 						"name": "type",
 						"in": "query",
 						"required": true,
+						"description": "",
+						"type": "string"
+					},
+					{
+						"name": "type_id",
+						"in": "query",
+						"required": false,
 						"description": "",
 						"type": "string"
 					}
@@ -1363,7 +1412,7 @@
 							"properties": {
 								"goods_name": {
 									"type": "string",
-									"description": "商品名",
+									"description": "商品名称",
 									"mock": {
 										"mock": "@ctitle"
 									}
@@ -1374,6 +1423,14 @@
 									"mock": {
 										"mock": "@id"
 									}
+								},
+								"type_id": {
+									"type": "string",
+									"description": "商品分类id"
+								},
+								"type_name": {
+									"type": "string",
+									"description": "商品分类名称"
 								},
 								"price": {
 									"type": "number",
@@ -1425,7 +1482,9 @@
 								"in_code",
 								"in_date",
 								"goods_id",
-								"id"
+								"id",
+								"type_id",
+								"type_name"
 							]
 						}
 					}
@@ -1585,6 +1644,20 @@
 										"mock": "@ctitle"
 									}
 								},
+								"type_id": {
+									"type": "number",
+									"description": "分类id",
+									"mock": {
+										"mock": "@id"
+									}
+								},
+								"type_name": {
+									"type": "string",
+									"description": "分类名称",
+									"mock": {
+										"mock": "@ctitle"
+									}
+								},
 								"out_num": {
 									"type": "number",
 									"description": "出库数量",
@@ -1628,7 +1701,9 @@
 								"out_code",
 								"out_date",
 								"id",
-								"out_cost"
+								"out_cost",
+								"type_id",
+								"type_name"
 							]
 						}
 					}
@@ -1686,6 +1761,14 @@
 									},
 									"description": "商品名称"
 								},
+								"type_id": {
+									"type": "string",
+									"description": "分类id"
+								},
+								"type_name": {
+									"type": "string",
+									"description": "分类名称"
+								},
 								"cost": {
 									"type": "number",
 									"description": "总成本",
@@ -1706,7 +1789,9 @@
 								"goods_name",
 								"cost",
 								"num",
-								"id"
+								"id",
+								"type_id",
+								"type_name"
 							]
 						},
 						"minItems": 10,
@@ -1799,13 +1884,23 @@
 									"type": "number",
 									"mock": {
 										"mock": "@id"
-									}
+									},
+									"description": "商品id"
 								},
 								"goods_name": {
 									"type": "string",
 									"mock": {
 										"mock": "@ctitle"
-									}
+									},
+									"description": "商品名称"
+								},
+								"type_id": {
+									"type": "number",
+									"description": "分类id"
+								},
+								"type_name": {
+									"type": "string",
+									"description": "分类名称"
 								},
 								"operation": {
 									"type": "number",
@@ -1837,7 +1932,9 @@
 								"goods_name",
 								"operation",
 								"date",
-								"num"
+								"num",
+								"type_id",
+								"type_name"
 							]
 						}
 					}

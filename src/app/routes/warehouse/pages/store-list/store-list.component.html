@@ -33,6 +33,14 @@
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
+        <nz-form-item>
+          <nz-form-label class="table-header-label">分类名称</nz-form-label>
+          <nz-form-control>
+            <nz-select [(ngModel)]="query.type_id" class="select-item" nzAllowClear nzShowSearch>
+              <nz-option *ngFor="let item of typeList" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
         <nz-col>
           <div class="button-group">
             <button nz-button class="ml-sm" (click)="clear()">重置</button>
