@@ -46,15 +46,15 @@ export interface IStoreOutItem {
 }
 
 export enum EOperation {
-  Purchase,
-  Gift,
-  Surplus,
-  Out
+  Purchase = 'purchase',
+  Gift = 'gift',
+  Surplus = 'surplus',
+  Out = 'out'
 }
 
 export const MOperation = {
-  0: '采购入库',
-  1: '赠送入库',
-  2: '盘盈入库',
-  3: '出库'
+  purchase: '采购入库',
+  gift: '赠送入库',
+  surplus: '盘盈入库',
+  out: '出库'
 };
