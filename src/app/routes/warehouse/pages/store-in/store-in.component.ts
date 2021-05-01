@@ -35,9 +35,9 @@ export class StoreInComponent implements OnInit {
   };
   storeList: IStoreInItem[] = [];
   inTypeMap = {
-    0: '采购入库',
-    1: '赠送入库',
-    2: '盘盈入库'
+    purchase: '采购入库',
+    gift: '赠送入库',
+    surplus: '盘盈入库'
   };
   EStoreIn = EStoreIn;
   typeList: IGoodsType[] = [];
@@ -59,7 +59,7 @@ export class StoreInComponent implements OnInit {
 
   getTypeList(): void {
     this.goodsService
-      .getApiGoodsList({
+      .getApiGoodsTypeList({
         page_index: '1',
         page_size: '1000',
         word: ''

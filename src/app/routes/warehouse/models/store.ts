@@ -16,7 +16,7 @@ export interface IStoreInItem {
   goods_id: number;
   goods_name?: string;
   id?: number;
-  exit_num?: number;
+  exist_num?: number;
 }
 
 export interface IStoreOutBatchItem {
@@ -31,9 +31,9 @@ export interface IStoreOutBatchItem {
 }
 
 export enum EStoreIn {
-  Purchase,
-  Gift,
-  Surplus
+  Purchase = 'purchase',
+  Gift = 'gift',
+  Surplus = 'surplus'
 }
 
 export interface IStoreOutItem {

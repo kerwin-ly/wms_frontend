@@ -38,7 +38,7 @@ export class StoreListComponent implements OnInit {
 
   getTypeList(): void {
     this.goodsService
-      .getApiGoodsList({
+      .getApiGoodsTypeList({
         page_index: '1',
         page_size: '1000',
         word: ''

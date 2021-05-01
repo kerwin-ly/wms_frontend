@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IGoods } from '@routes/goods/models';
-import { cloneDeep, reduce } from 'lodash-es';
+import { cloneDeep, map, reduce } from 'lodash-es';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { GoodsService, WarehouseService } from 'src/app/api/services';
@@ -72,7 +72,7 @@ export class StoreOutDetailComponent implements OnInit {
         page_size: '10000'
       })
       .subscribe((res) => {
-        item.total = reduce(res.data.items, (sum, subItem) => (sum += subItem.exit_num), 0);
+        item.total = reduce(res.data.items, (sum, subItem) => (sum += subItem.exist_num), 0);
       });
   }
 
@@ -89,9 +89,10 @@ export class StoreOutDetailComponent implements OnInit {
       this.msg.warning('请完善表单内容');
       return;
     }
+    const list = map(this.storeOutList, (item) => ({ goods_id: item.goods_id, num: item.out_num }));
     this.wmsService
       .postApiWarehouseOut({
-        out_list: this.storeOutList
+        out_list: list
       })
       .subscribe(() => {
         this.msg.success('出库成功');

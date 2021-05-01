@@ -1826,7 +1826,7 @@
 										"mock": "23"
 									}
 								},
-								"exit_num": {
+								"exist_num": {
 									"type": "number",
 									"description": "库存剩余数量"
 								},
@@ -1856,7 +1856,7 @@
 							},
 							"required": [
 								"price",
-								"exit_num",
+								"exist_num",
 								"in_type",
 								"in_code",
 								"in_date"
@@ -1925,6 +1925,13 @@
 									"mock": {
 										"mock": "@natural"
 									}
+								},
+								"state": {
+									"type": "string",
+									"mock": {
+										"mock": "out"
+									},
+									"description": "操作，out:出库，in:入库"
 								}
 							},
 							"required": [
@@ -1934,7 +1941,8 @@
 								"date",
 								"num",
 								"type_id",
-								"type_name"
+								"type_name",
+								"state"
 							]
 						}
 					}

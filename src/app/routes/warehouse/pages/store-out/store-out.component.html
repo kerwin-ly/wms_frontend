@@ -37,7 +37,7 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-label class="table-header-label">分类名称</nz-form-label>
-          <nz-form-control>
+          <nz-form-control class="table-header-input">
             <nz-select [(ngModel)]="query.type_id" class="select-item" nzAllowClear nzShowSearch>
               <nz-option *ngFor="let item of typeList" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
             </nz-select>
@@ -78,6 +78,7 @@
         <tr>
           <th>序号</th>
           <th>商品名</th>
+          <th>商品分类</th>
           <th>出库数量</th>
           <th nzWidth="150px">出库单号</th>
           <th>出库时间</th>
@@ -90,6 +91,7 @@
         <tr *ngFor="let data of storeOutList; let index = index">
           <td>{{ (page.pageIndex - 1) * page.pageSize + index + 1 }}</td>
           <td><app-table-tip [width]="150" [text]="data.goods_name"></app-table-tip></td>
+          <td>{{ data.type_name }}</td>
           <td>{{ data.out_num }}</td>
           <td>{{ data.out_code }}</td>
           <td>{{ data.out_date }}</td>

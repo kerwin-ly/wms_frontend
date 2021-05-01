@@ -34,10 +34,10 @@ export class StoreHistoryComponent implements OnInit {
     total: 1
   };
   operationMap = {
-    0: '采购入库',
-    1: '赠送入库',
-    2: '盘盈入库',
-    3: '出库'
+    purchase: '采购入库',
+    gift: '赠送入库',
+    surplus: '盘盈入库',
+    out: '出库'
   };
   defaultRanges = {
     今天: [this.dateTimeService.getDay(0), this.dateTimeService.getDay(0)],
@@ -45,6 +45,10 @@ export class StoreHistoryComponent implements OnInit {
     最近七天: [this.dateTimeService.getDay(-7), this.dateTimeService.getDay(0)]
   };
   typeList: IGoodsType[] = [];
+  stateMap = {
+    out: '出库',
+    in: '入库'
+  };
 
   constructor(
     private wmsService: WarehouseService,
@@ -60,7 +64,7 @@ export class StoreHistoryComponent implements OnInit {
 
   getTypeList(): void {
     this.goodsService
-      .getApiGoodsList({
+      .getApiGoodsTypeList({
         page_index: '1',
         page_size: '1000',
         word: ''

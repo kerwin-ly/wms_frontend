@@ -28,11 +28,11 @@ export interface ResGetApiWarehouseList {
   total: number;
 }
 export interface ResGetApiWarehouseBatch {
-  items: Array<{price: number, exit_num: number, in_type: 0 | 1 | 2, in_code: string, in_date: string}>;
+  items: Array<{price: number, exist_num: number, in_type: 0 | 1 | 2, in_code: string, in_date: string}>;
   total: number;
 }
 export interface ResGetApiWarehouseHistory {
-  items: Array<{goods_id: number, goods_name: string, type_id: number, type_name: string, operation: 0 | 1 | 2 | 3, date: string, num: number}>;
+  items: Array<{goods_id: number, goods_name: string, type_id: number, type_name: string, operation: 0 | 1 | 2 | 3, date: string, num: number, state: string}>;
   total: number;
 }
 export interface ResGetApiWarehouseHistoryDownload {
