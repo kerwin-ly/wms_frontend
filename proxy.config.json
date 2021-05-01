@@ -1,11 +1,11 @@
 {
   "/api": {
-    "target": "http://yapi.datagrand.com/mock/156",
+    "target": "http://localhost:5000",
     "secure": true,
     "changeOrigin": true
   },
   "/media": {
-    "target": "http://localhost:10002",
+    "target": "http://localhost:5000",
     "secure": true,
     "changeOrigin": true
   }
